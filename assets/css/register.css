@@ -1,0 +1,165 @@
+        @font-face {
+    font-family: "Urbanist";
+    src: url('../fonts/URBANIST-VARIABLEFONT_WGHT.TTF');
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Urbanist", sans-serif;
+}
+:root {
+    --primary-clr: #3B82F6;
+    --secondary-clr: #1E293B;
+    --accent-gold: #FCD34D;
+    --bg-clr: #F8FAFC;
+    --pure-white: #FFFFFF;
+}
+label { 
+    display: block; 
+    margin: 0.75rem 0 0.25rem; 
+    color: var(--pure-white)
+}
+input[type="text"], input[type="email"], input[type="password"], textarea {
+    width: 100%; 
+    padding: 0.5rem; 
+    margin-bottom: 1rem; 
+    border-radius: 7px !important;
+}
+input,textarea::placeholder{
+    font-style: italic;
+    color: var(--pure-white);
+}
+.file-upload .icon{
+    margin-top: 5px;
+}
+.file-upload input{
+    border-radius: 7px !important;
+}
+.back-vid{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+}
+.video-overlay{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7); /* dark transparent overlay */
+  z-index: 0;
+}
+.choose-user{
+    position: absolute;
+    z-index: 1;
+    right: 2%;
+}
+.choose-user .h1{
+    color: var(--pure-white);
+    font-size: 50px;
+    font-weight: 600;
+}
+.choose-user .p{
+    color: var(--primary-clr);
+    font-size: 25px;
+    font-style: italic;
+}
+.choose-user form select{
+    background-color: white;
+    border: 1px solid #ccc;
+    color: #000;
+    padding: 0.75rem;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    width: 100%;
+    display: block;
+    outline: none;
+    transition: 0.2s ease;
+}
+.choose-user form select:focus{
+    transform: scale(1.03);
+}
+.choose-user form button { 
+    padding: 0.6rem 1.2rem; 
+    border: 1px solid var(--primary-clr); 
+    background: transparent;
+    color: white; 
+    border-radius: 4px; 
+    cursor: pointer; 
+}
+.choose-user form button:hover { 
+    background: #2563eb; 
+}
+.step2, .step2 textarea{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5px;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+.step2 .left-side{
+    padding: 60px;
+    background-color: var(--bg-clr);
+    border-top-left-radius: 12px;
+    border-bottom-left-radius: 12px;
+}
+.step2 .left-side h1{
+    color: var(--primary-clr)
+}
+.step2 .right-side{
+    padding: 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; /* centers the form horizontally */
+}
+.step2 .right-side h2{
+    color: var(--primary-clr);
+}
+.step2 .input-group{
+    position: relative;
+    margin-bottom: 1.5rem;
+    width: 100%;
+    max-width: 400px;
+}
+
+.step2 form{
+    width: 100%;
+}
+.step2 input::placeholder{
+    color: var(--pure-white);
+}
+
+.step2 .input-group input{
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(6px);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    color: #fff;
+    width: 100%;
+    padding: 10px 10px 10px 40px; /* left padding for the icon */
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+}
+
+.step2 .input-group .icon{
+    position: absolute;
+    top: 40%;
+    left: 10px;
+    transform: translateY(-50%);
+    color: #555;
+    pointer-events: none;
+    z-index: 1;
+}
+.step2 .input-group .icon-1{
+    position: absolute;
+    top: 6%;
+}
