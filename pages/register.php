@@ -69,7 +69,7 @@ $show_step2 = isset($_SESSION['user_type']);
         <p class="p">Create account as an author or a reader.</p>
 <select name="user_type" id="user_type" class="my-3" required>
   <option value="" disabled selected>Select account type</option>
-  <option value="user">Register as User</option>
+  <option value="reader">Register as Reader</option>
   <option value="author">Register as Author</option>
 </select>
 
@@ -152,13 +152,15 @@ $show_step2 = isset($_SESSION['user_type']);
             <label for="username">Username <span class="required">*</span></label>
             <i class="fa-solid fa-circle-user icon"></i>
             <input id="username" name="username" placeholder="Your Username" type="text" />
+            <span class="error" id="usernameError"></span>
         </div>
 
         <!-- Pen Name -->
         <div class="input-group">
             <label for="pen_name">Pen Name <span class="required">*</span></label>
             <i class="fa-solid fa-signature icon"></i>
-            <input id="pen_name" name="pen_name" placeholder="Your Pen Name" type="text" />
+            <input id="penName" name="pen_name" placeholder="Your Pen Name" type="text" />
+            <span class="error" id="penNameError"></span>
         </div>
 
         <!-- Email -->
@@ -166,9 +168,10 @@ $show_step2 = isset($_SESSION['user_type']);
             <label for="email">Email <span class="required">*</span></label>
             <i class="fa-solid fa-envelopes-bulk icon"></i>
             <input id="email" name="email" placeholder="Your Email" type="email" />
+            <span class="error" id="emailError"></span>
         </div>
 
-        <!-- Profile Picture (optional) -->
+        <!-- Profile Picture -->
         <div class="input-group file-upload">
             <label for="profile_pic">Profile Picture (Optional)</label>
             <i class="fa-solid fa-cloud-arrow-up icon"></i>
@@ -178,7 +181,7 @@ $show_step2 = isset($_SESSION['user_type']);
         <!-- Short Bio -->
         <div class="input-group bio">
             <label for="bio">Short Bio</label>
-            <i class="fa-solid fa-feather icon"></i>
+            <i class="fa-solid fa-feather icon-f"></i>
             <textarea name="bio" id="bio" rows="5" placeholder="Write a short bio about yourself"></textarea>
         </div>
 
@@ -186,7 +189,9 @@ $show_step2 = isset($_SESSION['user_type']);
         <div class="input-group">
             <label for="password">Password <span class="required">*</span></label>
             <i class="fa-solid fa-lock icon"></i>
-            <input id="password" name="password" placeholder="Your Password" type="password" />
+            <input id="pwd" name="password" placeholder="Your Password" type="password" />
+            <i id="togglePassword" class="fa-solid fa-eye toggle-icon"></i>
+            <span class="error" id="pwdError"></span>
         </div>
 
         <!-- Confirm Password -->
@@ -194,6 +199,8 @@ $show_step2 = isset($_SESSION['user_type']);
             <label for="cpwd">Confirm Password <span class="required">*</span></label>
             <i class="fa-solid fa-house-lock icon"></i>
             <input id="cpwd" name="cpwd" placeholder="Confirm Password" type="password" />
+            <i id="toggleConfirmPassword" class="fa-solid fa-eye toggle-icon"></i>
+            <span class="error" id="cpwdError"></span>
         </div>
 
         <div>
