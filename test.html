@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Trending Discussions</title>
+  <style>
+body{
+    font-family: Arial, sans-serif;
+    background: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+h2{
+    text-align: center;
+    color: #333;
+}
+form{
+    background-color: #fff;
+    padding: 40px 60px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    width: 30em;
+}
+label{
+    display: block;
+    margin-bottom: 5px;
+    border-radius: 4px;
+    box-shadow: border-box;
+}
+input{
+    padding: 10px;
+    width: 100%;
+}
+button{
+    width: 100%;
+    padding: 10px;
+    background-color: #3b82f6;
+    border: none;
+    color: white;
+    font-size: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+button:hover{
+    background: #2563eb;
+}
+button:active{
+    transform: scale(0.95);
+}
+.error{
+    color: red;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+  </style>
+</head>
+<body>
+    <form id="signupForm">
+    <h2>Signup Form</h2>
+    <label>Username:</label>
+    <input type="text" id="username" name="username"><br><br>
+    <span class="error" id="usernameError"></span>
+
+    <label>Email:</label>
+    <input type="email" id="email" name="email"><br><br>
+    <span class="error" id="emailError"></span>
+
+    <label>Password:</label>
+    <input type="password" id="password" name="password"><br><br>
+    <span class="error" id="passwordError"></span>
+
+    <label>Confirm Password:</label>
+    <input type="password" id="confirmPassword" name="confirmPassword"><br><br>
+    <span class="error" id="confirmPasswordError"></span>
+
+    <button type="submit">Sign Up</button>
+</form>
+
+<script>
+    const form = document.getElementById('signupForm');
+
+    // Prevent form from submitting
+    form.addEventListener('click', (e) => {
+        e.preventDefault();
+        
+        // Get input values
+    let username = document.getElementById('username').value.trim();
+    let email = document.getElementById('email').value.trim();
+    let password = document.getElementById('password').value.trim();
+    let confirmPassword = document.getElementById('confirmPassword').value.trim();
+
+    // Reset Error Messages
+    document.getElementById('usernameError').textContent = '';
+    document.getElementById('emailError').textContent = '';
+    document.getElementById('passwordError').textContent = '';
+    document.getElementById('confirmPasswordError').textContent = '';
+
+    let hasError = false;
+    
+    // check for empty feilds
+    if(username == ''){
+        document.getElementById('usernameError').textContent = 'Username is required'; 
+        hasError = true;
+    }else if(email == ''){
+        document.getElementById('emailError').textContent = 'Email is required';
+        hasError = true;
+    }else if(password == ''){
+        document.getElementById('passwordError').textContent = 'Password is required';
+        hasError = true;
+    }else if(confirmPassword == ''){
+        document.getElementById('confirmPasswordError').textContent = 'This feild is required';
+        hasError = true;
+    }
+    if(hasError == false){
+        alert("Form Submitted Succesfully");
+    }
+});
+</script>
+</body>
+</html>
