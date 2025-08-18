@@ -11,7 +11,7 @@ if (isset($_POST['back'])) {
 // Step 1 submission: save user_type in session and move to step 2
 if (isset($_POST['step1_submit'])) {
     $user_type = $_POST['user_type'] ?? null;
-    if ($user_type === 'user' || $user_type === 'library') {
+    if ($user_type === 'user' || $user_type === 'author') {
         $_SESSION['user_type'] = $user_type;
     } else {
         $error = "Please select an account type.";
@@ -66,11 +66,11 @@ $show_step2 = isset($_SESSION['user_type']);
                 <?php endif; ?>
                 <form method="POST" action="../app/process.php">
         <h1 class="h1">Register To Begin.</h1>
-        <p class="p">Create account as a library or a reader.</p>
+        <p class="p">Create account as an author or a reader.</p>
 <select name="user_type" id="user_type" class="my-3" required>
   <option value="" disabled selected>Select account type</option>
   <option value="user">Register as User</option>
-  <option value="library">Register as Library</option>
+  <option value="author">Register as Author</option>
 </select>
 
         <button type="submit" class="px-5 rounded-pill" name="step1_submit">Next</button>
@@ -101,155 +101,108 @@ $show_step2 = isset($_SESSION['user_type']);
          <?php endif; ?>
      </div>
      <div class="right-side">
-    <?php if ($_SESSION['user_type'] === 'user'): ?>
-        <form method="POST" action="../app/process.php">
-            <h2>User Registration</h2>
+    <!-- Reader Form -->
+<?php if ($_SESSION['user_type'] === 'user'): ?>
+    <form method="POST" action="../app/process.php">
 
-            <!-- Username-->
-            <div class="input-group">
+        <!-- Username-->
+        <div class="input-group">
+            <label for="name">Username <span class="required">*</span></label>
             <i class="fa-solid fa-circle-user icon"></i>
-            <input id="name" name="name" placeholder="Your Username" type="text" required />
-            </div>
+            <input id="name" name="name" placeholder="Your Username" type="text" />
+        </div>
 
-            <!-- Email -->
-            <div class="input-group">
+        <!-- Email -->
+        <div class="input-group">
+            <label for="email">Email <span class="required">*</span></label>
             <i class="fa-solid fa-envelopes-bulk icon"></i>
-            <input id="email" name="email" placeholder="Your Email" type="email" required />
-            </div>
+            <input id="email" name="email" placeholder="Your Email" type="email" />
+        </div>
 
-            <!-- Password -->
-            <div class="input-group">
+        <!-- Password -->
+        <div class="input-group">
+            <label for="pwd">Password <span class="required">*</span></label>
             <i class="fa-solid fa-lock icon"></i>
-            <input id="pwd" name="password" placeholder="Your Password" type="password" required />
-            </div>
+            <input id="pwd" name="password" placeholder="Your Password" type="password" />
+        </div>
 
-            <!-- Confirm Password -->
-            <div class="input-group">
+        <!-- Confirm Password -->
+        <div class="input-group">
+            <label for="cpwd">Confirm Password <span class="required">*</span></label>
             <i class="fa-solid fa-house-lock icon"></i>
-            <input id="cpwd" name="cpwd" placeholder="Confirm Password" type="password" required />
-            </div>
+            <input id="cpwd" name="cpwd" placeholder="Confirm Password" type="password" />
+        </div>
 
-            <div>
-                <button type="submit" name="back" class="back-btn">Back</button>
-                <button type="submit" name="step2_submit">Register</button>
-            </div>
-        </form>
-        <?php elseif ($_SESSION['user_type'] === 'library'): ?>
-            <form method="POST" action="../app/process.php" enctype="multipart/form-data">
-                <h2>Library Registration</h2>
-                <!-- Username-->
-            <div class="input-group">
-            <i class="fa-solid fa-house-user icon"></i>
-            <input id="name" name="name" placeholder="Name of Library" type="text" required />
-            </div>
+        <div>
+            <button type="button" onclick="window.location.href='back.php'" class="back-btn">Back</button>
+            <button type="submit" name="step2_submit">Register</button>
+        </div>
+    </form>
+<?php elseif ($_SESSION['user_type'] === 'author'): ?>
+    <form method="POST" action="../app/process.php" enctype="multipart/form-data">
 
-            <!-- Logo-->
-            <div class="input-group file-upload">
-                <i class="fa-solid fa-cloud-arrow-up icon"></i>
-            <input id="logo" name="logo" class="file-input" type="file" title="Click to upload" required />
-            </div>
+        <!-- Username -->
+        <div class="input-group">
+            <label for="username">Username <span class="required">*</span></label>
+            <i class="fa-solid fa-circle-user icon"></i>
+            <input id="username" name="username" placeholder="Your Username" type="text" />
+        </div>
 
-            <!-- Email -->
-            <div class="input-group">
+        <!-- Pen Name -->
+        <div class="input-group">
+            <label for="pen_name">Pen Name <span class="required">*</span></label>
+            <i class="fa-solid fa-signature icon"></i>
+            <input id="pen_name" name="pen_name" placeholder="Your Pen Name" type="text" />
+        </div>
+
+        <!-- Email -->
+        <div class="input-group">
+            <label for="email">Email <span class="required">*</span></label>
             <i class="fa-solid fa-envelopes-bulk icon"></i>
-            <input id="email" name="email" placeholder="Contact Email" type="email" required />
-            </div>
-            
-            <!-- Address -->
-            <div class="input-group">
-                <i class="fa-solid fa-map-location-dot icon"></i>
-                <input id="address" name="address" placeholder="Address" type="text" required />
-            </div>
-            
-            <!-- Open Hours-->
-            <div class="input-group">
-                <i class="fa-solid fa-clock icon"></i>
-                <input id="open-hours" name="open-hours" placeholder="Open Hours(eg: 8AM-5PM)" type="text" required />
-            </div>
-            
-            <!-- Description -->
-            <div class="input-group">
-                <i class="fa-solid fa-clock icon-1"></i>
-                <textarea name="desc" id="desc" cols="30" rows="10" class="ps-4" placeholder="Describe your Library"></textarea>
-            </div>
-            
-            <!-- Password -->
-            <div class="input-group">
-                <i class="fa-solid fa-lock icon"></i>
-                <input id="password" name="password" placeholder="Set a Password" type="password" required />
-                <span id="passwordError" class="error" style="font-size:11px;color:red">Your password must be 8 and above characters long,must contain letter, number and special characters</span>
-            </div>
-            
-            <!-- Confirm Password -->
-            <div class="input-group">
+            <input id="email" name="email" placeholder="Your Email" type="email" />
+        </div>
+
+        <!-- Profile Picture (optional) -->
+        <div class="input-group file-upload">
+            <label for="profile_pic">Profile Picture (Optional)</label>
+            <i class="fa-solid fa-cloud-arrow-up icon"></i>
+            <input id="profile_pic" name="profile_pic" class="file-input" type="file" />
+        </div>
+
+        <!-- Short Bio -->
+        <div class="input-group bio">
+            <label for="bio">Short Bio</label>
+            <i class="fa-solid fa-feather icon"></i>
+            <textarea name="bio" id="bio" rows="5" placeholder="Write a short bio about yourself"></textarea>
+        </div>
+
+        <!-- Password -->
+        <div class="input-group">
+            <label for="password">Password <span class="required">*</span></label>
+            <i class="fa-solid fa-lock icon"></i>
+            <input id="password" name="password" placeholder="Your Password" type="password" />
+        </div>
+
+        <!-- Confirm Password -->
+        <div class="input-group">
+            <label for="cpwd">Confirm Password <span class="required">*</span></label>
             <i class="fa-solid fa-house-lock icon"></i>
-            <input id="cpwd" name="cpwd" placeholder="Confirm your Password" type="password" required />
-            <span id="confirmPasswordError" style="font-size:11px;" class="error"></span>
-            </div>
+            <input id="cpwd" name="cpwd" placeholder="Confirm Password" type="password" />
+        </div>
 
-
-            <div>
-                <button type="submit" name="back" class="back-btn">Back</button>
-                <button type="submit" name="step2_submit">Register</button>
-            </div>
-            </div>
-        </form>
-        <?php endif; ?>
+        <div>
+            <button type="button" onclick="window.location.href='back.php'" class="back-btn">Back</button>
+            <button type="submit" name="step2_submit">Register</button>
+        </div>
+    </form>
+<?php endif; ?>
         
         <?php endif; ?>
     </div>
 </section>
 
-<script src="../assets/js/jquery.js"></script>
 <script>
-    $(document).ready(function(){
-
    
-$("#pwd").on("keyup", function() {
-var number = /([0-9])/;
-var alphabets = /([a-zA-Z])/;
-var special_characters = /([~,!,@,#,$,%,^,&,*,.,-,_,+,=,?,>,<])/;
-var password = $('#pwd').val().trim();
-
-if (password.length < 8) {
-  $('#passwordError').text("Your password must be 8 and above characters long,must contain letter, number and special characters").css("color", "red");
-} else {
-if (password.match(number) && password.match(alphabets) && password.match(special_characters)) {	
-  $("#passwordError").text("Strong password ✓✓✓").css("color", "green");
-       
-}
-else {
-  
-  $('#passwordError').text("Password should contain alphabets, numbers and special characters.").css("color", "red");
-}
-}
-      
-});
-
-
-    });
-    // checking comfirm password
-
-$("#cpwd").on("keyup", function() {
-var number = /([0-9])/;
-var alphabets = /([a-zA-Z])/;
-var special_characters = /([~,!,@,#,$,%,^,&,*,.,-,_,+,=,?,>,<])/;
-var password = $('#pwd').val().trim();
-var cpassword = $('#cpwd').val().trim();
-
-if (password.match(number) && password.match(alphabets) && password.match(special_characters)) {	
-  $("#passwordError").text("");
-}
-
-$("#confirmPasswordError").text("Checking if comfirm Password matches with Password").css("color", "red");
-
-if(cpassword === password){
-    $("#confirmPasswordError").text("Password Matches ✓✓✓").css("color", "green");
-  
-}
-
-
-});
 </script>
 
 </body>

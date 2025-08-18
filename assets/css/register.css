@@ -15,11 +15,13 @@
     --bg-clr: #F8FAFC;
     --pure-white: #FFFFFF;
 }
-label { 
-    display: block; 
-    margin: 0.75rem 0 0.25rem; 
-    color: var(--pure-white)
+label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 6px;
+    color: var(--pure-white);
 }
+
 input[type="text"], input[type="email"], input[type="password"], textarea {
     width: 100%; 
     padding: 0.5rem; 
@@ -110,6 +112,10 @@ input,textarea::placeholder{
     background-color: var(--bg-clr);
     border-top-left-radius: 12px;
     border-bottom-left-radius: 12px;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow: hidden;
 }
 .step2 .left-side h1{
     color: var(--primary-clr)
@@ -152,14 +158,37 @@ input,textarea::placeholder{
 
 .step2 .input-group .icon{
     position: absolute;
-    top: 40%;
+    top: 60%;
     left: 10px;
     transform: translateY(-50%);
     color: #555;
     pointer-events: none;
     z-index: 1;
 }
+.bio.icon{
+    top:  10%;
+}
 .step2 .input-group .icon-1{
     position: absolute;
     top: 6%;
+}
+/* Labels + Required Styling */
+
+
+.required {
+    color: red;
+    font-size: 1.1rem;
+    margin-left: 4px;
+}
+
+.input-group {
+    margin-bottom: 1.5rem;
+}
+
+/* Inputs hover/focus */
+.step2 input:focus, 
+.step2 textarea:focus {
+    outline: none;
+    border-color: var(--primary-clr);
+    box-shadow: 0 0 6px rgba(59, 130, 246, 0.6);
 }
