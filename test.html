@@ -83,7 +83,7 @@ button:active{
     const form = document.getElementById('signupForm');
 
     // Prevent form from submitting
-    form.addEventListener('click', (e) => {
+    form.addEventListener('submit', (e) => {
         e.preventDefault();
         
         // Get input values
@@ -100,19 +100,45 @@ button:active{
 
     let hasError = false;
     
-    // check for empty feilds
+    // Validating feilds
+    //Username
     if(username == ''){
-        document.getElementById('usernameError').textContent = 'Username is required'; 
+        document.getElementById('usernameError').textContent = 'Please enter a username';
         hasError = true;
-    }else if(email == ''){
-        document.getElementById('emailError').textContent = 'Email is required';
+    }
+    // Email
+    if(email == ''){
+        document.getElementById('emailError').textContent = 'Please enter your email';
         hasError = true;
-    }else if(password == ''){
+    }else{
+        const emailPattern = /[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-z{2,4}$]/;
+        if(!emailPattern.test(email)){
+            document.getElementById('emailError').textContent = 'Invalid email format';
+            hasError = true;
+        }
+    }
+    if(password == ''){
         document.getElementById('passwordError').textContent = 'Password is required';
         hasError = true;
-    }else if(confirmPassword == ''){
-        document.getElementById('confirmPasswordError').textContent = 'This feild is required';
+    }else if(password.length < 8){
+        document.getElementById('passwordError').textContent = 'Password should be at least 8 characters';
         hasError = true;
+    }else{
+        const pwdPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[\W_.]).{8,}$/;
+        if(!pwdPattern.test(password)){
+            document.getElementById('passwordError').textContent = 'Password should be at least 8 characters, include uppercase, lowercase number and special character';
+            hasError = true;
+        }
+    }
+    if(confirmPassword == ''){
+        document.getElementById('confirmPasswordError').textContent = 'Please confirm your password';
+        hasError = true;
+    }else if(password !== '' && confirmPassword !== '' && password !== confirmPassword){
+        document.getElementById('confirmPasswordError').textContent = 'Passwords do not match';
+        hasError = true;
+    }
+    if(hasError == false){
+        alert("Form submitted to backend");
     }
     if(hasError == false){
         alert("Form Submitted Succesfully");

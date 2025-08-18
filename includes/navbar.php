@@ -20,7 +20,7 @@
         padding: 0;
         margin: 0;
         box-sizing: border-box;
-        font-family: "Manrope";
+        font-family: "Manrope", sans-serif;
     }
     :root{
     --primary-clr: #3B82F6;

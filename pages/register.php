@@ -103,13 +103,14 @@ $show_step2 = isset($_SESSION['user_type']);
      <div class="right-side">
     <!-- Reader Form -->
 <?php if ($_SESSION['user_type'] === 'user'): ?>
-    <form method="POST" action="../app/process.php">
+    <form id="registerForm" method="POST" action="../app/process.php">
 
         <!-- Username-->
         <div class="input-group">
             <label for="name">Username <span class="required">*</span></label>
             <i class="fa-solid fa-circle-user icon"></i>
-            <input id="name" name="name" placeholder="Your Username" type="text" />
+            <input id="username" name="name" placeholder="Your Username" type="text" />
+            <span class="error" id="usernameError"></span>
         </div>
 
         <!-- Email -->
@@ -117,13 +118,16 @@ $show_step2 = isset($_SESSION['user_type']);
             <label for="email">Email <span class="required">*</span></label>
             <i class="fa-solid fa-envelopes-bulk icon"></i>
             <input id="email" name="email" placeholder="Your Email" type="email" />
+            <span class="error" id="emailError"></span>
         </div>
 
         <!-- Password -->
         <div class="input-group">
             <label for="pwd">Password <span class="required">*</span></label>
             <i class="fa-solid fa-lock icon"></i>
-            <input id="pwd" name="password" placeholder="Your Password" type="password" />
+            <input id="pwd" name="pwd" placeholder="Your Password" type="password" />
+            <i id="togglePassword" class="fa-solid fa-eye toggle-icon"></i>
+            <span class="error" id="pwdError"></span>
         </div>
 
         <!-- Confirm Password -->
@@ -131,6 +135,8 @@ $show_step2 = isset($_SESSION['user_type']);
             <label for="cpwd">Confirm Password <span class="required">*</span></label>
             <i class="fa-solid fa-house-lock icon"></i>
             <input id="cpwd" name="cpwd" placeholder="Confirm Password" type="password" />
+            <i id="toggleConfirmPassword" class="fa-solid fa-eye toggle-icon"></i>
+            <span class="error" id="cpwdError"></span>
         </div>
 
         <div>
@@ -139,7 +145,7 @@ $show_step2 = isset($_SESSION['user_type']);
         </div>
     </form>
 <?php elseif ($_SESSION['user_type'] === 'author'): ?>
-    <form method="POST" action="../app/process.php" enctype="multipart/form-data">
+    <form id="registerForm" method="POST" action="../app/process.php" enctype="multipart/form-data">
 
         <!-- Username -->
         <div class="input-group">
@@ -201,9 +207,7 @@ $show_step2 = isset($_SESSION['user_type']);
     </div>
 </section>
 
-<script>
-   
-</script>
+<script src="../assets/js/register.js"></script>
 
 </body>
 </html>

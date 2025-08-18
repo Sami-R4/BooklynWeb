@@ -165,20 +165,34 @@ input,textarea::placeholder{
     pointer-events: none;
     z-index: 1;
 }
-.bio.icon{
-    top:  10%;
-}
 .step2 .input-group .icon-1{
     position: absolute;
     top: 6%;
+}
+
+.input-group .toggle-icon{
+    position: absolute;
+    top: 3em;
+    right: 1em;
+    cursor: pointer;
 }
 /* Labels + Required Styling */
 
 
 .required {
-    color: red;
+    color: #C53030;
     font-size: 1.1rem;
     margin-left: 4px;
+}
+.input-group{
+    position: relative;
+}
+.error{
+    position: relative;
+    bottom: -5px;
+    color: #C53030;
+    font-size: 15px;
+    font-style: italic;
 }
 
 .input-group {
