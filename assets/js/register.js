@@ -91,6 +91,14 @@ form.addEventListener('submit', (e) => {
         hasError = true;
     }
 
+    if(!hasError){
+        e.preventDefault;
+        const firstError = document.querySelector('.error:not(:empty)');
+        if(firstError) {
+            firstError.scrollIntoView({behavior: 'smooth', block: 'center'})
+        }
+
+    }
     
     
     

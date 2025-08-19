@@ -161,7 +161,7 @@ $show_step2 = isset($_SESSION['user_type']);
         <div class="input-group">
             <label for="pen_name">Pen Name <span class="required">*</span></label>
             <i class="fa-solid fa-signature icon"></i>
-            <input id="penName" name="pen_name" placeholder="Your Pen Name" type="text" />
+            <input id="penName" name="penName" placeholder="Your Pen Name" type="text" />
             <span class="error" id="penNameError"></span>
         </div>
 
@@ -175,7 +175,7 @@ $show_step2 = isset($_SESSION['user_type']);
 
         <!-- Profile Picture -->
         <div class="input-group file-upload">
-            <label for="profile_pic">Profile Picture (Optional)</label>
+            <label for="profile_pic">Profile Picture <span class="required">*</span></label>
             <i class="fa-solid fa-cloud-arrow-up icon"></i>
             <input id="profile_pic" name="profile_pic" class="file-input" type="file" />
         </div>
