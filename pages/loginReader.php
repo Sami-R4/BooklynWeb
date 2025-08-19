@@ -111,7 +111,7 @@ include ("../includes/navbar.php");
             </div>
             <a href="#" class="text-decoration-none">Forgot password?</a>
           </div>
-          <button type="submit" name="loginUser" class="btn btn-gold w-50 text-white d-block mx-auto py-2 mb-3">Sign In</button>
+          <button type="submit" name="loginReader" class="btn btn-gold w-50 text-white d-block mx-auto py-2 mb-3">Sign In</button>
           <div class="text-center">
             <p class="mb-0">Don't have an account? <a href="../pages/register.php" class="text-decoration-none">Sign up</a></p>
           </div>

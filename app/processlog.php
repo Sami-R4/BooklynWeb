@@ -7,7 +7,10 @@ function filterData($value) {
     return stripslashes(htmlspecialchars(trim($value)));
 }
 
-if(isset($_POST['loginUser'])){
+// =======================================================
+// ============ Reader Login =============================
+// =======================================================
+if(isset($_POST['loginReader'])){
     $email = filterData($_POST['loginEmail']);
     $pwd = filterData($_POST['loginPassword']);
 
@@ -15,7 +18,7 @@ if(isset($_POST['loginUser'])){
     $sql = "SELECT * FROM `users` WHERE useremail='$email' LIMIT 1";
     $result = mysqli_query($conn, $sql);
 
-    if($result && mysqli_num_rows($result) === 1){
+    if($result && mysqli_num_rows($result) == 1){
         $user = mysqli_fetch_assoc($result);
         $pwdlog = $user['password'];
 
@@ -34,7 +37,43 @@ if(isset($_POST['loginUser'])){
         }else{
             $alert = '<script>
             if(window.confirm("Incorrect Login Credentials!!! Try Again.")){
-            window.location.href = "../pages/index.php";
+        }
+            </script>';
+            echo $alert;
+        }
+    }
+}
+
+// =======================================================
+// ============ Author Login =============================
+// =======================================================
+if(isset($_POST['loginAuthor'])){
+    $email = filterData($_POST['loginEmail']);
+    $pwd = filterData($_POST['loginPassword']);
+
+    // Checking if user exists
+    $sql = "SELECT * FROM `users` WHERE useremail='$email' LIMIT 1";
+    $result = mysqli_query($conn, $sql);
+
+    if($result && mysqli_num_rows($result) == 1){
+        $user = mysqli_fetch_assoc($result);
+        $pwdlog = $user['password'];
+
+        // Verifying Pwd
+        if(password_verify($pwd, $pwdlog)){
+            // setting session variables
+            session_start();
+            $_SESSION['user_id'] = $user['user_id'];
+            $_SESSION['username'] = $user['username'];
+            $alert = '<script>
+            if(window.confirm("Login Succesfull!!!")){
+            window.location.href = "../pages/user/home.php";
+        }
+            </script>';
+            echo $alert;
+        }else{
+            $alert = '<script>
+            if(window.confirm("Incorrect Login Credentials!!! Try Again.")){
         }
             </script>';
             echo $alert;
