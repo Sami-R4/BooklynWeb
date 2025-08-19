@@ -168,7 +168,7 @@ ul li a.active::after{
         <button class="login-btn mx-2 rounded" id="dropdownBtn">Login</button>
         <!-- Dropdown Menu -->
          <div class="dropdown-menu" id="dropDown">
-          <a href="../pages/loginUser.php">As Reader</a>
+          <a href="../pages/loginReader.php">As Reader</a>
           <a href="../pages/loginAuthor.php">As Author</a>
          </div>
         <a href="../pages/register.php">

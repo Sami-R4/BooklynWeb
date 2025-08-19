@@ -116,9 +116,9 @@
 <script src="../assets/js/bootstrap.js"></script>
 <script src="../assets/js/bootstrapPopper.js"></script>
 <script>
-  AOS.init({
-    once: true
-  });
+  // AOS.init({
+  //   once: true
+  // });
 
   // Data for 6 discussions
 const discussionsData = [

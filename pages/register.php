@@ -11,18 +11,17 @@ if (isset($_POST['back'])) {
 // Step 1 submission: save user_type in session and move to step 2
 if (isset($_POST['step1_submit'])) {
     $user_type = $_POST['user_type'] ?? null;
-    if ($user_type === 'user' || $user_type === 'author') {
+    if ($user_type === 'reader' || $user_type === 'author') {
         $_SESSION['user_type'] = $user_type;
     } else {
         $error = "Please select an account type.";
     }
 }
 
-// Step 2 submission: here you’d handle full registration processing
+// Step 2 submission
 if (isset($_POST['step2_submit'])) {
-    // Normally validate and process registration here
-    // For demo, just clear session and show success
-    $registered_type = $_SESSION['user_type'] ?? 'user';
+
+    $registered_type = $_SESSION['user_type'] ?? 'reader';
     session_destroy();
     exit;
 }
@@ -40,6 +39,9 @@ $show_step2 = isset($_SESSION['user_type']);
     <link rel="stylesheet" href="../assets/css/register.css">
     <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- SweetAlert CSS -->
+<link rel="stylesheet" href="../assets/css/sweetalert.css">
     <style>
 
         .error { color: rgb(255, 0,0); }
@@ -102,14 +104,14 @@ $show_step2 = isset($_SESSION['user_type']);
      </div>
      <div class="right-side">
     <!-- Reader Form -->
-<?php if ($_SESSION['user_type'] === 'user'): ?>
+<?php if ($_SESSION['user_type'] === 'reader'): ?>
     <form id="registerForm" method="POST" action="../app/process.php">
 
         <!-- Username-->
         <div class="input-group">
             <label for="name">Username <span class="required">*</span></label>
             <i class="fa-solid fa-circle-user icon"></i>
-            <input id="username" name="name" placeholder="Your Username" type="text" />
+            <input id="username" name="username" placeholder="Your Username" type="text" />
             <span class="error" id="usernameError"></span>
         </div>
 
@@ -213,8 +215,28 @@ $show_step2 = isset($_SESSION['user_type']);
         <?php endif; ?>
     </div>
 </section>
-
 <script src="../assets/js/register.js"></script>
+
+<?php if(isset($_SESSION['alert'])): ?>
+    <script src="../assets/js/sweetalert.js"></script>
+    <script>
+        Swal.fire({
+            title: '<?= $_SESSION['alert']['title'] ?>',
+            text: '<?= $_SESSION['alert']['message'] ?>',
+            icon: '<?= $_SESSION['alert']['type'] ?>'
+        }).then((result) => {
+            <?php if(isset($_SESSION['alert']['redirect'])): ?>
+                window.location.href = '<?= $_SESSION['alert']['redirect'] ?>';
+            <?php endif; ?>
+        });
+    </script>
+    <?php
+    unset($_SESSION['alert']);
+    endif;
+?>
+
+ 
+
 
 </body>
 </html>

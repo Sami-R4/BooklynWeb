@@ -31,19 +31,16 @@ confirmPasswordToggle.classList.toggle('fa-eye-slash');
 
 
 form.addEventListener('submit', (e) => {
-    // Prevent default form submission
-    e.preventDefault();
-
-    // Get form values
+       // Get form values
     let username = document.getElementById('username').value.trim();
-    let penName = document.getElementById('penName').value.trim();
+    // let penName = document.getElementById('penName').value.trim();
     let email = document.getElementById('email').value.trim();
     let pwd = document.getElementById('pwd').value.trim();
     let cpwd = document.getElementById('cpwd').value.trim();
 
     // Reset Error Messages
     document.getElementById('usernameError').textContent = '';
-    document.getElementById('penNameError').textContent = '';
+    // document.getElementById('penNameError').textContent = '';
     document.getElementById('emailError').textContent = '';
     document.getElementById('pwdError').textContent = '';
     document.getElementById('cpwdError').textContent = '';
@@ -57,9 +54,9 @@ form.addEventListener('submit', (e) => {
         hasError = true;
     }
     // PenName
-    if(penName == ''){
-        document.getElementById('penNameError').textContent = "Please enter a nickname";
-    }
+    // if(penName == ''){
+    //     document.getElementById('penNameError').textContent = "Please enter a nickname";
+    // }
     // Email
     if(email == ''){
         document.getElementById('emailError').textContent = 'Please enter your email';
@@ -93,8 +90,9 @@ form.addEventListener('submit', (e) => {
         document.getElementById('cpwdError').textContent = 'Passwords do not match';
         hasError = true;
     }
-    if(hasError == false){
-        alert("Form submitted to backend");
-    }
+
+    
+    
+    
 
 });
