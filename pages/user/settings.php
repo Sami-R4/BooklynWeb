@@ -79,9 +79,6 @@ include("user-navbar.php");
       <li class="nav-item" role="presentation">
         <button class="nav-link" id="support-tab" data-bs-toggle="tab" data-bs-target="#support" type="button" role="tab">Support</button>
       </li>
-      <li class="nav-item" role="presentation">
-        <button class="nav-link text-danger" id="delete-tab" data-bs-toggle="tab" data-bs-target="#delete" type="button" role="tab">Delete Account</button>
-      </li>
     </ul>
 
     <div class="tab-content p-4" id="settingsTabsContent">
@@ -142,21 +139,7 @@ include("user-navbar.php");
         </form>
       </div>
 
-      <!-- Delete Account Tab -->
-      <div class="tab-pane fade" id="delete" role="tabpanel">
-        <h5 class="fw-bold text-danger">Delete Your Account</h5>
-        <div class="alert bg-light-gold border border-warning text-dark mt-3">
-          <strong>Warning:</strong> This action is irreversible. Your account and all data will be permanently deleted.
-        </div>
-        <form>
-          <div class="mb-3">
-            <label class="form-label">Enter Password to Confirm</label>
-            <input type="password" class="form-control" placeholder="••••••••">
-          </div>
-          <button type="submit" class="btn btn-danger">Delete Account</button>
-        </form>
-      </div>
-    </div>
+      
   </div>
 
   <script src="../../assets/js/bootstrap.js"></script>

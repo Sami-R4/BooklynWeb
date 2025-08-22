@@ -78,7 +78,7 @@ if(isset($_POST['step2_submit'])){
             'type' => 'success',
             'title' => 'Success!!',
             'message' => 'Registration Successful!!!',
-            'redirect' => ($user_type == 'author') ? '../pages/books.php' : '../pages/user/home.php'  
+            'redirect' => ($user_type == 'author') ? '../pages/author/user-navbar.php' : '../pages/user/home.php'  
         ];
         header("Location: ../pages/register.php");
         exit;

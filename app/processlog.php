@@ -37,6 +37,7 @@ if(isset($_POST['loginReader'])){
         }else{
             $alert = '<script>
             if(window.confirm("Incorrect Login Credentials!!! Try Again.")){
+            window.location.href = "../pages/loginAuthor.php";
         }
             </script>';
             echo $alert;
@@ -65,9 +66,19 @@ if(isset($_POST['loginAuthor'])){
             session_start();
             $_SESSION['user_id'] = $user['user_id'];
             $_SESSION['username'] = $user['username'];
+
+            // Get author ID
+            if($user_type == 'author'){
+                $author_sql = "SELECT * FROM authors WHERE email = '$email'";
+                $author_qry = mysqli_query($conn, $author_sql);
+                if($author_qry && mysqli_num_rows($author_qry) == 1){
+                    $author = mysqli_fetch_assoc($author_qry);
+                    $_SESSION['author_id'] = $author['author_id'];
+                }
+            }
             $alert = '<script>
             if(window.confirm("Login Succesfull!!!")){
-            window.location.href = "../pages/user/home.php";
+            window.location.href = "../pages/author/user-navbar.php";
         }
             </script>';
             echo $alert;

@@ -2,17 +2,17 @@
 // Active States
   $currentPage = basename($_SERVER['PHP_SELF']);
   // Set Session
-// session_start();
-// $session = $_SESSION['user_id'];
-// $username = $_SESSION['username'];
+session_start();
+$session = $_SESSION['user_id'];
+$username = $_SESSION['username'];
 
-// if(!isset($session)){
-//   echo '<script>
-//         if(window.confirm("You have to login!!!")){
-//         window.location.href = "../index.php";
-// }
-//   </script>';
-// }
+if(!isset($session)){
+  echo '<script>
+        if(window.confirm("You have to login!!!")){
+        window.location.href = "../loginReader.php";
+}
+  </script>';
+}
 
 ?>
 
@@ -72,6 +72,7 @@
     <img src="../../assets/img/placeholder.jpg" alt="User Profile" id="userDropdownToggle"><i class="fa-solid fa-caret-down mt-2"></i>
     </span>
     <div class="user-dropdown" id="userDropdown">
+      <a href="profile.php"><i class="fa-solid fa-user"></i> View Profile</a>
       <a href="../index.php"><i class="fa-solid fa-arrow-rotate-left"></i> Return to Home</a>
       <a href="#"><i class="fas fa-sign-out-alt"></i> Logout</a>
     </div>
