@@ -77,8 +77,8 @@ if(isset($_POST['step2_submit'])){
         $_SESSION['alert'] = [
             'type' => 'success',
             'title' => 'Success!!',
-            'message' => 'Registration Successful!!!',
-            'redirect' => ($user_type == 'author') ? '../pages/author/user-navbar.php' : '../pages/user/home.php'  
+            'message' => 'Registration Successful! Login Now.',
+            'redirect' =>  '../pages/login.php'  
         ];
         header("Location: ../pages/register.php");
         exit;

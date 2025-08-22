@@ -125,30 +125,6 @@ ul li a.active::after{
     background: var(--accent-gold);
     color: #000;
 }
-.dropdown-menu{
-  display: none;
-  flex-direction: column;
-  gap: 0.3em;
-  background: rgba(0,0,0,0.5);
-  min-width: 160px;
-  overflow: hidden;
-  padding: 0;
-  margin-top: 10em;
-  margin-left: 1.5em;
-  overflow: hidden;
-}
-.dropdown-menu a{
-  text-decoration: none;
-  display: block;
-  color: #fff;
-  padding: 12px 16px;
-}
-.dropdown-menu a:hover{
-  background: rgba(0,0,0,0.8);
-}
-.dropdown-menu.show{
-  display: flex;
-}
 </style>
 <body>
     <!-- Modify your nav section -->
@@ -165,32 +141,14 @@ ul li a.active::after{
     
     <!-- Auth Buttons -->
     <div class="ms-auto my-3 d-flex align-items-center gap-3">
-        <button class="login-btn mx-2 rounded" id="dropdownBtn">Login</button>
-        <!-- Dropdown Menu -->
-         <div class="dropdown-menu" id="dropDown">
-          <a href="../pages/loginReader.php">As Reader</a>
-          <a href="../pages/loginAuthor.php">As Author</a>
-         </div>
+        <a href="../pages/login.php">
+            <button class="login-btn mx-2 rounded" id="dropdownBtn">Login</button>
+        </a>
+        
         <a href="../pages/register.php">
             <button class="start-btn mx-2 rounded">Get Started</button>
         </a>
     </div>
 </nav>
-
-<script>
-  const btn = document.getElementById('dropdownBtn');
-  const dropDown = document.getElementById('dropDown');
-  
-  // show dropdown on click
-  btn.addEventListener('click', (e) => {
-    e.stopPropagation();
-    dropDown.classList.toggle('show');
-  });
-
-   // remove dialogue on click out
-  document.addEventListener('click', (event) => {
-    if(dropDown) dropDown.classList.remove('show');
-  });
-</script>
 </body>
 </html>
