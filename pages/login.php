@@ -15,6 +15,10 @@ if(isset($_SESSION['error'])){
     <title>Login Form</title>
     <link rel="stylesheet" href="../assets/css/bootstrap.css">  
     <script src="../assets/js/jquery.js"></script>
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="../assets/img/myLogo.png" type="image/x-icon">
+     <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <style>
     *{
@@ -74,17 +78,37 @@ body{
 form .fs-4{
   color: var(--accent-gold);
 }
-.btn-gold{
-    box-shadow: inset 0 0 10px var(--accent-gold);
-    background: var(--primary-clr);
-    color: white;
-    border: none;
-  }
-  .btn-gold:hover{
-    box-shadow: 0 0 10px 2px var(--accent-gold);
-    transition: box-shadow 0.3s ease;
-    background: var(--primary-clr);
-    color: white;
+.btn-wrapper {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: stretch;
+  margin-top: 0.5em;
+}
+.btn-wrapper .btn-login,
+.btn-wrapper .back-button {
+  padding: 10px;
+  border-radius: 5px;
+  width: 100%;
+}
+.btn-wrapper .btn-login{
+  background: var(--primary-clr);
+}
+.btn-wrapper .btn-login:hover{
+  background: #2563EB;
+  box-shadow: 0 0 10px var(--primary-clr);
+  transition: box-shadow 0.3s ease;
+}
+.btn-wrapper .back-button{
+  background: transparent;
+  box-shadow: 0 0 10px transparent;
+  border: 1.5px solid var(--primary-clr);
+  color: var(--primary-clr);
+}
+.btn-wrapper .back-button:hover{
+  box-shadow: 0 0 10px var(--primary-clr);
+  color: var(--pure-white);
+  transition: box-shadow 0.3s ease, color 0.3s ease;
 }
 .form{
     background: var(--secondary-clr);
@@ -101,21 +125,7 @@ form .fs-4{
 .reader-form, .author-form{
   display: none;
 }
-.back-button {
-  background: transparent;
-  box-shadow: 0 0 10px var(--accent-gold);
-  color: white;
-  border: none;
-  padding: 10px 15px;
-  border-radius: 5px;
-  cursor: pointer;
-  margin-top: 10px;
-  transition: all 0.2s ease;
-}
-.back-button:hover {
-  box-shadow: inset 0 0 15px var(--accent-gold);
-  transform: scale(1.02);
-}
+
 .error-message {
   color: #ff6b6b;
   font-size: 14px;
@@ -125,7 +135,7 @@ form .fs-4{
 </style>
 <body>
 
-<?php include("../includes/navbar.php") ?>
+<?php include("../includes/navbar.php") ?> 
 
 <div class="form-container mt-5">
     <!-- User Type Selection Form -->
@@ -156,13 +166,13 @@ form .fs-4{
         
         <div class="mb-3">
             <label for="readerEmail" class="form-label">Email address</label>
-            <input type="email" class="form-control" name="email" id="readerEmail" placeholder="name@example.com" required>
+            <input type="email" class="form-control" name="readerEmail" id="readerEmail" placeholder="name@example.com" required>
             <div class="error-message" id="readerEmailError"></div>
         </div>
         
         <div class="mb-3">
             <label for="readerPassword" class="form-label">Password</label>
-            <input type="password" class="form-control" name="password" id="readerPassword" placeholder="••••••••" required>
+            <input type="password" class="form-control" name="readerPassword" id="readerPassword" placeholder="••••••••" required>
             <div class="error-message" id="readerPasswordError"></div>
         </div>
         
@@ -174,8 +184,10 @@ form .fs-4{
             <a href="#" class="text-decoration-none" style="color: var(--accent-gold);">Forgot password?</a>
         </div>
         
-        <button type="submit" name="login" class="btn btn-gold w-100 py-2 mb-3">Sign In as Reader</button>
-        <button type="button" class="back-button w-100">Back to User Selection</button>
+        <div class="btn-wrapper">
+          <button type="button" class="back-button"><i class="fa-solid fa-clock-rotate-left"></i> Back to User Selection</button>
+          <button type="submit" name="loginReader" class="btn btn-login py-2">Sign In as Reader <i class="fa-solid fa-right-to-bracket"></i></button>
+        </div>
     </form>
 
     <!-- Author Login Form -->
@@ -185,13 +197,13 @@ form .fs-4{
         
         <div class="mb-3">
             <label for="authorEmail" class="form-label">Email address</label>
-            <input type="email" class="form-control" name="email" id="authorEmail" placeholder="name@example.com" required>
+            <input type="email" class="form-control" name="authorEmail" id="authorEmail" placeholder="name@example.com" required>
             <div class="error-message" id="authorEmailError"></div>
         </div>
         
         <div class="mb-3">
             <label for="authorPassword" class="form-label">Password</label>
-            <input type="password" class="form-control" name="password" id="authorPassword" placeholder="••••••••" required>
+            <input type="password" class="form-control" name="authorPassword" id="authorPassword" placeholder="••••••••" required>
             <div class="error-message" id="authorPasswordError"></div>
         </div>
         
@@ -203,11 +215,30 @@ form .fs-4{
             <a href="#" class="text-decoration-none" style="color: var(--accent-gold);">Forgot password?</a>
         </div>
         
-        <button type="submit" name="login" class="btn btn-gold w-100 py-2 mb-3">Sign In as Author</button>
-        <button type="button" class="back-button w-100" onclick="goBack()">Back to User Selection</button>
+        <div class="btn-wrapper">
+       <button type="button" class="back-button"><i class="fa-solid fa-clock-rotate-left"></i> Back to User Selection</button>
+        <button type="submit" name="loginAuthor" class="btn btn-login py-2">Sign In as Author <i class="fa-solid fa-right-to-bracket"></i></button>
+       </div>
     </form>
 </div>
 
+<?php if(isset($_SESSION['alert'])): ?>
+    <script src="../assets/js/sweetalert.js"></script>
+    <script>
+        Swal.fire({
+            title: '<?= $_SESSION['alert']['title'] ?>',
+            text: '<?= $_SESSION['alert']['message'] ?>',
+            icon: '<?= $_SESSION['alert']['type'] ?>'
+        }).then((result) => {
+            <?php if(isset($_SESSION['alert']['redirect'])): ?>
+                window.location.href = '<?= $_SESSION['alert']['redirect'] ?>';
+            <?php endif; ?>
+        });
+    </script>
+    <?php
+    unset($_SESSION['alert']);
+    endif;
+?>
 <script>
   $(document).ready(function() {
     // When user type is selected

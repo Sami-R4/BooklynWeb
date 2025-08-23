@@ -49,6 +49,7 @@ if(isset($_POST['step2_submit'])){
             if($author_result){
                 $user_sql = "INSERT INTO `users`(`username`, `useremail`, `password`, `user_type`) VALUES ('$username','$email','$pwd','$user_type')";
                 $result = mysqli_query($conn, $user_sql);
+                $user = mysqli_fetch_assoc($result);
             }
             } else {
                 $_SESSION['alert'] = [
@@ -77,8 +78,8 @@ if(isset($_POST['step2_submit'])){
         $_SESSION['alert'] = [
             'type' => 'success',
             'title' => 'Success!!',
-            'message' => 'Registration Successful! Login Now.',
-            'redirect' =>  '../pages/login.php'  
+            'message' => 'Registration Successful!!! Please Login',
+            'redirect' =>  '../pages/login.php'
         ];
         header("Location: ../pages/register.php");
         exit;

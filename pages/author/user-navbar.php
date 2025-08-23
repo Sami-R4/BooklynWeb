@@ -1,36 +1,45 @@
 <?php
-// Active States
-  $currentPage = basename($_SERVER['PHP_SELF']);
-  // Set Session
+// Start session first
 session_start();
-$session = $_SESSION['user_id'];
-$username = $_SESSION['username'];
 
-if(!isset($session)){
+// Check if user is logged in
+if(!isset($_SESSION['user_id'])){
   echo '<script>
         if(window.confirm("You have to login!!!")){
-        window.location.href = "../loginAuthor.php";
-}
+        window.location.href = "../login.php";
+        }
   </script>';
+  exit();
 }
 
 include("../../app/dbconfig.php");
 
-// Get ID from session
-$author_id = $_GET['id'] ?? $_SESSION['author_id'] ?? null;
-
-if($author_id){
-  $author_sql = "SELECT * FROM authors WHERE author_id = '$author_id'";
-  $author_qry = mysqli_query($conn, $author_sql);
-  if($author_qry && mysqli_num_rows($author_qry) > 1){
-    $author_result = mysqli_fetch_assoc($author_qry);
-    $profile_pic = $author_result['pic_path'];
-  }else{
-    $profile_pic = '../../assets/img/placeholder.jpg'; // Default image if not found
-  }
-}else{
-  $profile_pic = '../../assets/img/placeholder.jpg'; // Default image if not found
+// Get username based on user type
+if(isset($_SESSION['user_type']) && $_SESSION['user_type'] == 'author' && isset($_SESSION['pen_name'])) {
+    $username = $_SESSION['pen_name'];
+} else {
+    $username = $_SESSION['username'] ?? 'User';
 }
+
+// Get profile picture
+$profile_pic = '../../assets/img/placeholder.jpg'; // Default image
+
+
+if(isset($_SESSION['user_type']) && $_SESSION['user_type'] == 'author' && isset($_SESSION['author_id'])) {
+    $author_id = $_SESSION['author_id'];
+    $author_sql = "SELECT pic_path FROM authors WHERE author_id = '$author_id'";
+    $author_qry = mysqli_query($conn, $author_sql);
+    
+    if($author_qry && mysqli_num_rows($author_qry) == 1){
+        $author_result = mysqli_fetch_assoc($author_qry);
+        if(!empty($author_result['pic_path'])) {
+            $profile_pic = $author_result['pic_path'];
+        }
+    }
+} 
+
+// Active States
+$currentPage = basename($_SERVER['PHP_SELF']);
 ?>
 
 <!DOCTYPE html>
@@ -44,16 +53,14 @@ if($author_id){
   <link href="../../assets/css/user_navbar.css" rel="stylesheet">
   <!-- Font Awesome -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-
 </head>
 <body>
-
 
 <!-- Desktop Navigation -->
 <nav class="top-navbar">
   <div class="d-flex align-items-center gap-3">
     <div class="nav-logo">
-      <i class="fas fa-book-open"></i> Booklyn
+      <img src="../../assets/img/myLogo.png" alt="logo" style="border-radius: 50%;" width="30" height="30"> Booklyn
     </div>
     <ul class="desktop-nav">
       <li>
@@ -83,7 +90,7 @@ if($author_id){
       <a href="profile.php"><i class="fa-solid fa-cog"></i> Settings</a>
       <a href="profile.php"><i class="fa-solid fa-user"></i> View Profile</a>
       <a href="../index.php"><i class="fa-solid fa-arrow-rotate-left"></i> Return to Home</a>
-      <a href="#"><i class="fas fa-sign-out-alt"></i> Logout</a>
+      <a href="logout.php"><i class="fas fa-sign-out-alt"></i> Logout</a> <!-- Fixed: added logout link -->
     </div>
   </div>
 </nav>
@@ -104,7 +111,7 @@ if($author_id){
       </a>
     </li>
     <li class="mobile-nav-item">
-        <a class="mobile-nav-link" href="favorites.php">
+        <a class="mobile-nav-link" href="uploads.php"> <!-- Fixed: changed href to uploads.php -->
             <i class="fas fa-upload"></i>
             <span>Uploads</span>
         </a>
@@ -118,14 +125,14 @@ if($author_id){
     <!-- Dropdown -->
     <li class="mobile-nav-item">
       <div class="mobile-nav-link" id="mobileUserDropdownToggle">
-        <img src="../../app/<?php echo $profile_pic;?>" alt="User" style="width: 24px; height: 24px; border-radius: 50%; border: 2px solid #fcd34d; object-fit: cover;">
+        <img src="<?php echo $profile_pic;?>" alt="User" style="width: 24px; height: 24px; border-radius: 50%; border: 2px solid #fcd34d; object-fit: cover;">
         <span>Account</span>
       </div>
       <div class="mobile-dropdown" id="mobileUserDropdown">
       <a href="settings.php"><i class="fa-solid fa-cog"></i> Settings</a>
       <a href="profile.php"><i class="fa-solid fa-user"></i> View Profile</a>
       <a href="../index.php"><i class="fa-solid fa-arrow-rotate-left"></i> Return to Home</a>
-        <a href="#"><i class="fas fa-sign-out-alt"></i> Logout</a>
+        <a href="logout.php"><i class="fas fa-sign-out-alt"></i> Logout</a> <!-- Fixed: added logout link -->
       </div>
     </li>
   </ul>

@@ -5,8 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Booklyn | Home</title>
     <!-- AOS CSS -->
-<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-</head>
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"></head>
+<!-- Favicon -->
+    <link rel="shortcut icon" href="../../assets/img/myLogo.png" type="image/x-icon">
 <style>
     .dashboard-hero {
   background: #f8f9fa;
@@ -64,9 +65,9 @@
 
     <div class="row justify-content-center mt-5 g-3" data-aos="fade-up">
       <div class="col-6 col-md-3" data-toggle="tooltip" data-placement="top" title="Tooltip on top">
-        <a href="collections.php" class="dashboard-link" >
+        <a href="communities.php" class="dashboard-link" >
             <i class="fas fa-book"></i>
-            <span>My Collections</span>
+            <span>My Comunites</span>
             <span class="number fs-2 mt-2">25</span>
         </a>
       </div>

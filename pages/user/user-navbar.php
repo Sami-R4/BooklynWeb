@@ -9,7 +9,7 @@ $username = $_SESSION['username'];
 if(!isset($session)){
   echo '<script>
         if(window.confirm("You have to login!!!")){
-        window.location.href = "../loginReader.php";
+        window.location.href = "../login.php";
 }
   </script>';
 }
@@ -27,7 +27,8 @@ if(!isset($session)){
   <link href="../../assets/css/user_navbar.css" rel="stylesheet">
   <!-- Font Awesome -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-
+  <!-- Favicon -->
+    <link rel="shortcut icon" href="../assets/img/myLogo.png" type="image/x-icon">
 </head>
 <body>
 
@@ -36,14 +37,14 @@ if(!isset($session)){
 <nav class="top-navbar">
   <div class="d-flex align-items-center gap-3">
     <div class="nav-logo">
-      <i class="fas fa-book-open"></i> Booklyn
+      <img src="../../assets/img/myLogo.png" alt="logo" style="border-radius: 50%;" width="30" height="30"> Booklyn
     </div>
     <ul class="desktop-nav">
       <li>
         <a class="nav-link <?php echo $currentPage == 'home.php' ? 'active': '' ?>" href="home.php"><i class="fas fa-home"></i> Home</a>
       </li>
       <li>
-        <a class="nav-link <?php echo $currentPage == 'collections.php' ? 'active': '' ?>" href="communities.php"><i class="fa-solid fa-users"></i> My Communities</a>
+        <a class="nav-link <?php echo $currentPage == 'communities.php' ? 'active': '' ?>" href="communities.php"><i class="fa-solid fa-users"></i> My Communities</a>
       </li>
       <li>
         <a class="nav-link <?php echo $currentPage == 'favorites.php' ? 'active': '' ?>" href="favorites.php"><i class="fas fa-heart"></i> Favorites</a>
@@ -72,9 +73,8 @@ if(!isset($session)){
     <img src="../../assets/img/placeholder.jpg" alt="User Profile" id="userDropdownToggle"><i class="fa-solid fa-caret-down mt-2"></i>
     </span>
     <div class="user-dropdown" id="userDropdown">
-      <a href="profile.php"><i class="fa-solid fa-user"></i> View Profile</a>
       <a href="../index.php"><i class="fa-solid fa-arrow-rotate-left"></i> Return to Home</a>
-      <a href="#"><i class="fas fa-sign-out-alt"></i> Logout</a>
+      <a href="logout.php"><i class="fas fa-sign-out-alt"></i> Logout</a>
     </div>
   </div>
 </nav>
