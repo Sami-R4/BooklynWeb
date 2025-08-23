@@ -64,6 +64,7 @@
   text-decoration: none;
   color: #000;
   font-size: 1.2em;
+  font-weight: 550;
 }
 .action-card{
   display: flex;
@@ -161,6 +162,49 @@
       <a href="add.php" class="action-card"><i class="fas fa-plus"></i> Add Book</a>
       <a href="saved.php" class="action-card"><i class="fas fa-floppy-disk"></i> View Saved</a>
       <a href="notes.php" class="action-card"><i class="fas fa-newspaper"></i> Notes</a>
+    </div>
+  </div>
+</section>
+
+<!-- Discover Section -->
+<section class="container my-5">
+  <h2 class="mb-4">Recommendations</h2>
+  
+  <div class="row g-4">
+    <!-- Book Card 1 -->
+    <div class="col-md-4">
+      <div class="card shadow-sm border-0 h-100" style="max-height: 400px;">
+        <img src="../../assets/img/glitch.jpg" class="card-img-top" width="50%" alt="Book 1">
+        <div class="card-body">
+          <h5 class="card-title">The Great Adventure</h5>
+          <p class="card-text text-muted">By John Doe</p>
+          <a href="book-details.php?id=1" class="btn btn-primary btn-sm">See More</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Book Card 1 -->
+    <div class="col-md-4">
+      <div class="card shadow-sm border-0 h-100" style="max-height: 400px;">
+        <img src="../../assets/img/glitch.jpg" class="card-img-top" width="50%" alt="Book 1">
+        <div class="card-body">
+          <h5 class="card-title">The Great Adventure</h5>
+          <p class="card-text text-muted">By John Doe</p>
+          <a href="book-details.php?id=1" class="btn btn-primary btn-sm">See More</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Book Card 1 -->
+    <div class="col-md-4">
+      <div class="card shadow-sm border-0 h-100" style="max-height: 400px;">
+        <img src="../../assets/img/glitch.jpg" class="card-img-top" width="50%" alt="Book 1">
+        <div class="card-body">
+          <h5 class="card-title">The Great Adventure</h5>
+          <p class="card-text text-muted">By John Doe</p>
+          <a href="book-details.php?id=1" class="btn btn-primary btn-sm">See More</a>
+        </div>
+      </div>
     </div>
   </div>
 </section>

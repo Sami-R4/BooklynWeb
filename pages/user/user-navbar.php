@@ -37,7 +37,7 @@ if(!isset($session)){
 <nav class="top-navbar">
   <div class="d-flex align-items-center gap-3">
     <div class="nav-logo">
-      <img src="../../assets/img/myLogo.png" alt="logo" style="border-radius: 50%;" width="30" height="30"> Booklyn
+      <img src="../../assets/img/myLogo.png" alt="logo" style="border-radius: 50%; width="50" height="30"> Booklyn
     </div>
     <ul class="desktop-nav">
       <li>
