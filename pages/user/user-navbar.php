@@ -68,9 +68,10 @@ if(!isset($session)){
   </div>
 
   <div class="nav-user">
+      <i class="fa-solid fa-bell me-3"></i>
       <span><?php echo htmlspecialchars($username); ?></span>
     <span class="d-flex gap-1">
-    <img src="../../assets/img/placeholder.jpg" alt="User Profile" id="userDropdownToggle"><i class="fa-solid fa-caret-down mt-2"></i>
+    <img src="../../assets/img/placeholder.jpg" alt="User Profile" id="userDropdownToggle">
     </span>
     <div class="user-dropdown" id="userDropdown">
       <a href="../index.php"><i class="fa-solid fa-arrow-rotate-left"></i> Return to Home</a>

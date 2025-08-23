@@ -53,6 +53,8 @@ $currentPage = basename($_SERVER['PHP_SELF']);
   <link href="../../assets/css/user_navbar.css" rel="stylesheet">
   <!-- Font Awesome -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <!-- Favicon -->
+    <link rel="shortcut icon" href="../../assets/img/myLogo.png" type="image/x-icon">
 </head>
 <body>
 

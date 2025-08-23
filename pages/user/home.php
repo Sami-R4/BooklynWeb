@@ -30,7 +30,7 @@
 
 .dashboard-link i {
   font-size: 1.8rem;
-  color: #3B82F6; /* Skybook Primary */
+  color: #3B82F6; 
   margin-bottom: 0.5rem;
 }
 
@@ -49,6 +49,71 @@
   font-weight: 500;
   font-size: 1rem;
 }
+.home-actions{
+  border-bottom: 1px solid #ddd;
+}
+.quick-actions{
+  margin: 2em 4em;
+}
+.actions-grid{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+.actions-grid a{
+  text-decoration: none;
+  color: #000;
+  font-size: 1.2em;
+}
+.action-card{
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  height: 120px;
+  padding: 0 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 12px rgba(0,0,0,0.2);
+}
+.action-card i{
+  font-size: 2rem;
+  color: #3B82F6;
+  background: #9cc1fcff;
+  padding: 15px;
+  border-radius: 50%;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+.action-card i::after{
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%) scale(0);
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, rgba(255,255,255,0.9) 10%, transparent 70%);
+  border-radius: 50%;
+  opacity: 0;
+}
+.action-card i:hover::after{
+  animation: wave 1s ease-in-out;
+}
+@keyframes wave {
+  0%{
+    transform: translate(-50%, -50%) scale(0.2);
+    opacity: 1;
+  }
+  50%{
+    transform: translate(-50%, -50%) scale(0.9);
+    opacity: 0.6;
+  }
+  100%{
+    transform: translate(-50%, -50%) scale(1.05);
+    opacity: 0.1;
+  }
+  
+}
 </style>
 <body>
 
@@ -60,11 +125,10 @@
   <div class="container">
     <div data-aos="fade-down">
       <h2 class="fw-bold"><i class="fas fa-hand-wave"></i> Hello, <?php echo $username; ?></h2>
-      <blockquote class="fst-italic mt-3">“A room without books is like a body without a soul.”</blockquote>
     </div>
 
-    <div class="row justify-content-center mt-5 g-3" data-aos="fade-up">
-      <div class="col-6 col-md-3" data-toggle="tooltip" data-placement="top" title="Tooltip on top">
+    <div class="row justify-content-center mt-5 g-3 w-100" data-aos="fade-up">
+      <div class="col-6 col-md-3" data-toggle="tooltip" data-placement="top" title="Click to see communities">
         <a href="communities.php" class="dashboard-link" >
             <i class="fas fa-book"></i>
             <span>My Comunites</span>
@@ -85,16 +149,22 @@
           <span class="number fs-2 mt-2">7</span>
         </a>
       </div>
-      <div class="col-6 col-md-3">
-        <a href="libraries.php" class="dashboard-link" title="Click to see Libraries">
-          <i class="fas fa-building-columns"></i>
-          <span>Libraries</span>
-          <span class="number fs-2 mt-2">2</span>
-        </a>
-      </div>
     </div>
   </div>
 </section>
+
+<section class="home-actions">
+  <div class="quick-actions">
+    <h3>Quick Actions</h3>
+    <div class="actions-grid">
+      <a href="continue.php" class="action-card"><i class="fas fa-book"></i> Continue Reading</a>
+      <a href="add.php" class="action-card"><i class="fas fa-plus"></i> Add Book</a>
+      <a href="saved.php" class="action-card"><i class="fas fa-floppy-disk"></i> View Saved</a>
+      <a href="notes.php" class="action-card"><i class="fas fa-newspaper"></i> Notes</a>
+    </div>
+  </div>
+</section>
+
 
 <!-- AOS Script -->
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
