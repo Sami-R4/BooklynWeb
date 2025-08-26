@@ -75,7 +75,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
         <a class="nav-link <?php echo $currentPage == 'uploads.php' ? 'active': '' ?>" href="uploads.php"><i class="fas fa-upload"></i> Uploads</a>
       </li>
       <li class="position-relative">
-        <a class="nav-link <?php echo $currentPage == 'insights.php' ? 'active' : '' ?>" href="insights.php"><i class="fas fa-chart-line"></i> Insights</a>
+        <a class="nav-link <?php echo $currentPage == 'earnings.php' ? 'active' : '' ?>" href="earnings.php"><i class="fas fa-chart-line"></i> Earnings</a>
       </li>
       <li class="position-relative">
         <a class="nav-link <?php echo $currentPage == 'feedback.php' ? 'active' : '' ?>" href="feedback.php"><i class="fas fa-comments"></i> Feedback</a>
@@ -92,7 +92,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
       <a href="profile.php"><i class="fa-solid fa-cog"></i> Settings</a>
       <a href="profile.php"><i class="fa-solid fa-user"></i> View Profile</a>
       <a href="../index.php"><i class="fa-solid fa-arrow-rotate-left"></i> Return to Home</a>
-      <a href="logout.php"><i class="fas fa-sign-out-alt"></i> Logout</a> <!-- Fixed: added logout link -->
+      <a href="logout.php"><i class="fas fa-sign-out-alt"></i> Logout</a> 
     </div>
   </div>
 </nav>
@@ -119,15 +119,15 @@ $currentPage = basename($_SERVER['PHP_SELF']);
         </a>
     </li>
     <li class="mobile-nav-item">
-        <a class="mobile-nav-link" href="insights.php">
+        <a class="mobile-nav-link" href="earnings.php">
             <i class="fas fa-chart-line"></i>
-            <span>Insights</span>
+            <span>Earnings</span>
         </a>
     </li>
     <!-- Dropdown -->
     <li class="mobile-nav-item">
       <div class="mobile-nav-link" id="mobileUserDropdownToggle">
-        <img src="<?php echo $profile_pic;?>" alt="User" style="width: 24px; height: 24px; border-radius: 50%; border: 2px solid #fcd34d; object-fit: cover;">
+        <img src="../../app/<?php echo $profile_pic;?>" alt="User" style="width: 24px; height: 24px; border-radius: 50%; border: 2px solid #fcd34d; object-fit: cover;">
         <span>Account</span>
       </div>
       <div class="mobile-dropdown" id="mobileUserDropdown">

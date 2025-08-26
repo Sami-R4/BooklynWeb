@@ -207,7 +207,7 @@ include ("../includes/navbar.php");
               <button class="btn btn-sm add-btn">Add to Cart</button>
               <button class="btn btn-sm view-btn" data-bs-toggle="modal" data-bs-target="#bookModal'.$book['id'].'">Details</button>
             </span>
-              <button class="btn btn-outline-secondary btn-sm btn-fav"><i class="fa-regular fa-heart"></i></button>
+              <button class="btn btn-sm btn-fav" id="btn-like"><i class="fa-regular fa-heart"></i></button>
               
             </div>
           </div>';
@@ -272,7 +272,14 @@ include ("../includes/navbar.php");
    <?php
    include ("../includes/footer.php");
    ?>
-
+    <script>
+      document.querySelectorAll('.btn-fav').forEach(btn =>{
+        btn.addEventListener('click', function(){
+          this.style.backgroundColor = "#4895ef";
+          this.style.color = "#fff";
+        })
+      })
+    </script>
     <script src="../assets/js/bootstrap.js"></script>
     <script src="../assets/js/bootstrapPopper.js"></script>
 </body>

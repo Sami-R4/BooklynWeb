@@ -94,6 +94,16 @@
     .card img:hover{
       transform: scale(1.0);
     }
+    .card .btn-fav{
+      border: 1px solid var(--primary);
+      padding: 1px 8px;
+      border-radius: 7px;
+      color: var(--primary);
+    }
+    .card .btn-fav:hover{
+      background-color: var(--accent);
+      color: #fff;
+    }
     .card-footer button {
       border-radius: 20px;
       font-size: 0.85rem;

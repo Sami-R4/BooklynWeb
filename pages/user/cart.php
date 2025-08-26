@@ -8,7 +8,6 @@
     <link rel="shortcut icon" href="../../assets/img/myLogo.png" type="image/x-icon">
 </head>
 <style>
-<style>
 .card-title {
   color: #1E293B;
 }
@@ -32,7 +31,6 @@
 }
 </style>
 
-</style>
 <body>
     
 <?php
