@@ -1,9 +1,9 @@
     @font-face {
-        font-family: "Manrope";
-        src: url("../../assets/fonts/MANROPE-VARIABLEFONT_WGHT.TTF");
-    }
+    font-family: "Urbanist";
+    src: url('../fonts/URBANIST-VARIABLEFONT_WGHT.TTF');
+}
     *{
-        font-family: "Manrope", sans-serif;
+        font-family: "urbanist", sans-serif;
     }
     body {
       background: #f8fafc;

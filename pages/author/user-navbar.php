@@ -71,9 +71,6 @@ $currentPage = basename($_SERVER['PHP_SELF']);
       <li>
         <a class="nav-link <?php echo $currentPage == 'myBooks.php' ? 'active': '' ?>" href="myBooks.php"><i class="fa-solid fa-book"></i> My Books</a>
       </li>
-      <li>
-        <a class="nav-link <?php echo $currentPage == 'uploads.php' ? 'active': '' ?>" href="uploads.php"><i class="fas fa-upload"></i> Uploads</a>
-      </li>
       <li class="position-relative">
         <a class="nav-link <?php echo $currentPage == 'earnings.php' ? 'active' : '' ?>" href="earnings.php"><i class="fas fa-chart-line"></i> Earnings</a>
       </li>
@@ -89,7 +86,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
     <img src="../../app/<?php echo $profile_pic?>" alt="User Profile" id="userDropdownToggle">
     </span>
     <div class="user-dropdown" id="userDropdown">
-      <a href="profile.php"><i class="fa-solid fa-cog"></i> Settings</a>
+      <a href="settings.php"><i class="fa-solid fa-cog"></i> Settings</a>
       <a href="profile.php"><i class="fa-solid fa-user"></i> View Profile</a>
       <a href="../index.php"><i class="fa-solid fa-arrow-rotate-left"></i> Return to Home</a>
       <a href="logout.php"><i class="fas fa-sign-out-alt"></i> Logout</a> 
@@ -111,12 +108,6 @@ $currentPage = basename($_SERVER['PHP_SELF']);
         <i class="fas fa-book"></i>
         <span>My Books</span>
       </a>
-    </li>
-    <li class="mobile-nav-item">
-        <a class="mobile-nav-link" href="uploads.php"> <!-- Fixed: changed href to uploads.php -->
-            <i class="fas fa-upload"></i>
-            <span>Uploads</span>
-        </a>
     </li>
     <li class="mobile-nav-item">
         <a class="mobile-nav-link" href="earnings.php">

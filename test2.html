@@ -1,167 +1,174 @@
-<?php
-// dashboard.php
-session_start();
-// Optional: Check if user is logged in as author
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Author Dashboard</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <title>Author Settings - Booklyn</title>
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
+  
   <style>
-    /* ===== Earnings Page Layout ===== */
-.earnings-container {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 20px;
-  padding: 20px;
-}
-
-/* Cards Section */
-.earnings-cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 20px;
-}
-
-.earnings-card {
-  background: #fff;
-  border-radius: 12px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-  padding: 20px;
-  transition: transform 0.2s ease;
-}
-
-.earnings-card:hover {
-  transform: translateY(-4px);
-}
-
-.earnings-card h3 {
-  font-size: 16px;
-  font-weight: 600;
-  color: #555;
-  margin-bottom: 10px;
-}
-
-.earnings-card .amount {
-  font-size: 22px;
-  font-weight: 700;
-  color: #111;
-}
-
-/* Chart Section */
-.chart-section {
-  background: #fff;
-  border-radius: 12px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
-  padding: 20px;
-}
-
-.chart-section h2 {
-  font-size: 18px;
-  margin-bottom: 15px;
-  color: #333;
-}
-
-/* Table Section */
-.table-section {
-  background: #fff;
-  border-radius: 12px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
-  padding: 20px;
-  overflow-x: auto;
-}
-
-.table-section h2 {
-  font-size: 18px;
-  margin-bottom: 15px;
-  color: #333;
-}
-
-.table-section table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 14px;
-}
-
-.table-section th,
-.table-section td {
-  padding: 12px 15px;
-  text-align: left;
-  border-bottom: 1px solid #eee;
-}
-
-.table-section th {
-  background: #f9f9f9;
-  font-weight: 600;
-  color: #444;
-}
-
-.table-section tr:hover {
-  background: #fafafa;
-}
-
+    body {
+      background-color: #F8FAFC; /* Skybook Background */
+      font-family: "Segoe UI", sans-serif;
+    }
+    .settings-header {
+      margin-bottom: 2rem;
+    }
+    .settings-header h2 {
+      color: #1E293B; /* Secondary Dark */
+      font-weight: 600;
+    }
+    .card {
+      border: none;
+      border-radius: 12px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+      margin-bottom: 1.5rem;
+    }
+    .card-header {
+      background-color: transparent;
+      font-weight: 600;
+      font-size: 1.1rem;
+      color: #3B82F6; /* Primary */
+      border-bottom: 1px solid #eee;
+    }
+    .form-control, .form-select {
+      border-radius: 8px;
+    }
+    .btn-save {
+      background-color: #3B82F6;
+      border: none;
+      border-radius: 8px;
+      padding: 0.5rem 1.5rem;
+      color: white;
+    }
+    .btn-save:hover {
+      background-color: #2563EB;
+    }
+    .danger-zone {
+      border: 1px solid #FCA5A5;
+    }
+    .btn-danger {
+      border-radius: 8px;
+      padding: 0.5rem 1.5rem;
+    }
   </style>
 </head>
 <body>
-<div class="earnings-container">
 
-  <!-- Cards -->
-  <div class="earnings-cards">
-    <div class="earnings-card">
-      <h3>Today’s Earnings</h3>
-      <p class="amount">$120</p>
+<?php include ("user-navbar.php") ?>
+
+  <div class="container py-5">
+    <!-- Page Header -->
+    <div class="settings-header text-center">
+      <h2><i class="fa-solid fa-gear me-2"></i> Settings</h2>
+      <p class="text-muted">Manage your account preferences and security</p>
     </div>
-    <div class="earnings-card">
-      <h3>This Week</h3>
-      <p class="amount">$840</p>
+
+    <!-- Profile Settings -->
+    <div class="card">
+      <div class="card-header"><i class="fa-solid fa-user me-2"></i> Profile Settings</div>
+      <div class="card-body">
+        <div class="mb-3">
+          <label class="form-label">Profile Picture</label>
+          <input type="file" class="form-control">
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Display Name</label>
+          <input type="text" class="form-control" placeholder="Your pen name">
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Bio</label>
+          <textarea class="form-control" rows="3" placeholder="Tell readers about yourself"></textarea>
+        </div>
+        <button class="btn btn-save">Save</button>
+      </div>
     </div>
-    <div class="earnings-card">
-      <h3>This Month</h3>
-      <p class="amount">$3,250</p>
+
+    <!-- Account Security -->
+    <div class="card">
+      <div class="card-header"><i class="fa-solid fa-lock me-2"></i> Account Security</div>
+      <div class="card-body">
+        <div class="mb-3">
+          <label class="form-label">Change Email</label>
+          <input type="email" class="form-control" placeholder="newemail@example.com">
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Change Password</label>
+          <input type="password" class="form-control" placeholder="New password">
+        </div>
+        <button class="btn btn-save">Update</button>
+      </div>
     </div>
-    <div class="earnings-card">
-      <h3>Total Earnings</h3>
-      <p class="amount">$18,500</p>
+
+    <!-- Payment & Earnings -->
+    <div class="card">
+      <div class="card-header"><i class="fa-solid fa-wallet me-2"></i> Payment & Earnings</div>
+      <div class="card-body">
+        <div class="mb-3">
+          <label class="form-label">Payout Method</label>
+          <select class="form-select">
+            <option>Bank Transfer</option>
+            <option>PayPal</option>
+            <option>Mobile Money</option>
+          </select>
+        </div>
+        <button class="btn btn-save">Save</button>
+      </div>
     </div>
+
+    <!-- Notifications -->
+    <div class="card">
+      <div class="card-header"><i class="fa-solid fa-bell me-2"></i> Notifications</div>
+      <div class="card-body">
+        <div class="form-check form-switch mb-2">
+          <input class="form-check-input" type="checkbox" checked>
+          <label class="form-check-label">Email Notifications</label>
+        </div>
+        <div class="form-check form-switch mb-2">
+          <input class="form-check-input" type="checkbox">
+          <label class="form-check-label">New Feedback Alerts</label>
+        </div>
+        <div class="form-check form-switch mb-2">
+          <input class="form-check-input" type="checkbox" checked>
+          <label class="form-check-label">Sales Updates</label>
+        </div>
+        <button class="btn btn-save">Update</button>
+      </div>
+    </div>
+
+    <!-- Privacy -->
+    <div class="card">
+      <div class="card-header"><i class="fa-solid fa-shield-halved me-2"></i> Privacy & Preferences</div>
+      <div class="card-body">
+        <div class="form-check mb-2">
+          <input class="form-check-input" type="checkbox" checked>
+          <label class="form-check-label">Show profile publicly</label>
+        </div>
+        <div class="form-check mb-2">
+          <input class="form-check-input" type="checkbox">
+          <label class="form-check-label">Allow messages from readers</label>
+        </div>
+        <button class="btn btn-save">Save</button>
+      </div>
+    </div>
+
+    <!-- Danger Zone -->
+    <div class="card danger-zone">
+      <div class="card-header text-danger"><i class="fa-solid fa-triangle-exclamation me-2"></i> Danger Zone</div>
+      <div class="card-body">
+        <p class="text-muted">Be careful — these actions cannot be undone.</p>
+        <button class="btn btn-danger me-2">Deactivate Account</button>
+        <button class="btn btn-outline-danger">Delete Account</button>
+      </div>
+    </div>
+
   </div>
 
-  <!-- Chart -->
-  <div class="chart-section">
-    <h2>Monthly Earnings</h2>
-    <canvas id="earningsChart"></canvas>
-  </div>
-
-  <!-- Top Books -->
-  <div class="table-section">
-    <h2>Top Selling Books</h2>
-    <table>
-      <thead>
-        <tr>
-          <th>Book</th>
-          <th>Sales</th>
-          <th>Earnings</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Book Title 1</td>
-          <td>320</td>
-          <td>$1,280</td>
-        </tr>
-        <tr>
-          <td>Book Title 2</td>
-          <td>210</td>
-          <td>$950</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-
-</div>
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

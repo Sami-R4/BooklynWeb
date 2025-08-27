@@ -18,14 +18,17 @@
     .wrapper h2{
         margin-left: 20px;
     }
-        .main{
+    .main{
         margin: 20px 25px 20px 25px;
+    }
+    .dash-header h2{
+        color: #3B82F6;
     }
     .cards-grid{
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
         gap: 8px;
-        margin: 15px 8px;
+        margin: 3em 8px;
     }
     .card{
         display: flex;
@@ -59,7 +62,7 @@
     }
     .card-div{
         width: 100%;
-        padding: 8px 15px;
+        padding: 20px;
         border-radius: 8px;
         box-shadow: 0 0 8px rgba(0,0,0,0.3);
         border-left: 4px solid #3b82f6;
@@ -71,6 +74,12 @@
         border-radius:5px;
         color: #fff;
         padding: 2px 1.5px;
+    }
+    @media (max-width: 576px){
+        .grid{
+            flex-direction: column;
+            gap: 10px;
+        }
     }
 </style>
 <body>

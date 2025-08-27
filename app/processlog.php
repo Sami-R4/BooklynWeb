@@ -79,14 +79,14 @@ if(isset($_POST['loginAuthor'])){
             }
             $alert = '<script>
             if(window.confirm("Login Succesfull!!!")){
-            window.location.href = "../pages/author/user-navbar.php";
+            window.location.href = "../pages/author/dashboard.php";
         }
             </script>';
             echo $alert;
         }else{
             $alert = '<script>
             if(window.confirm("Incorrect Login Credentials!!! Try Again.")){
-            window.location.href = "../pages/loginAuthor.php";
+            window.location.href = "../pages/login.php";
         }
             </script>';
             echo $alert;
