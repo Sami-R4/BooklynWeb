@@ -10,6 +10,8 @@
     <link rel="shortcut icon" href="../../assets/img/myLogo.png" type="image/x-icon">
 <!-- Font Awesome -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+<!-- SweetAlert -->
+  <link rel="stylesheet" href="../../assets/css/sweetalert.css">
 </head>
 <style>
     .wrapper{
@@ -75,12 +77,60 @@
         color: #fff;
         padding: 2px 1.5px;
     }
+    .card-div button:hover{
+        background: #2563EB;
+    }
     @media (max-width: 576px){
         .grid{
             flex-direction: column;
             gap: 10px;
         }
     }
+     /* Modal Customization */
+    .modal-content {
+      border-radius: 1rem;
+      border: none;
+      box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.15);
+    }
+
+    .modal-header {
+      background-color: var(--primary-color);
+      color: #fff;
+      border-top-left-radius: 1rem;
+      border-top-right-radius: 1rem;
+    }
+
+    .btn-warning {
+      background-color: var(--accent-color);
+      color: #000;
+      border: none;
+    }
+
+    .btn-warning:hover {
+      background-color: #fbe16b;
+    }
+
+    .form-control:focus {
+      border-color: var(--accent-color);
+      box-shadow: 0 0 0 0.2rem rgba(252, 211, 77, 0.25);
+    }
+
+    .cover-preview-wrapper {
+  width: 100%;
+  max-height: 300px; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #f8f9fa;
+}
+#coverPreview {
+  max-height: 100%;
+  max-width: 100%;
+  object-fit: contain; 
+}
 </style>
 <body>
 
@@ -100,7 +150,7 @@
             </div>
             <!-- Card 2 -->
              <div class="card">
-                <i class="fas fa-users"></i>
+                <i class="fa-solid fa-users"></i>
                 <h4>Followers</h4>
                 <p>130</p>
             </div>
@@ -121,7 +171,7 @@
             <div class="card-div">
                 <h3>Create New Book</h3>
                 <p>Upload your next masterpiece</p>
-                <button><i class="fas fa-plus"></i> New Book</button>
+                <button class="btn-create" data-bs-toggle="modal" data-bs-target="#addBookModal"><i class="fas fa-plus"></i> New Book</button>
             </div>
             <div class="card-div">
                 <h3>Community Updates</h3>
@@ -132,5 +182,114 @@
     </div>
 </div>
 
+<!-- Add Book Modal -->
+<div class="modal fade" id="addBookModal" tabindex="-1" aria-labelledby="addBookModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header bg-primary text-white">
+        <h5 class="modal-title" id="addBookModalLabel">Add a New Book</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form id="addBookForm" action="../../app/book_upload-handler.php" method="post" enctype="multipart/form-data">
+          <div class="row">
+            <!-- Left column: Book Cover -->
+            <div class="col-md-4 d-flex flex-column align-items-center mb-3">
+              <label for="bookCover" class="form-label">Book Cover Image</label>
+              <input class="form-control mb-2" type="file" name="bookCover" id="bookCover" accept="image/*">
+              <div class="cover-preview-wrapper">
+                <img id="coverPreview" src="../../assets/img/bookcover-placeholder.png" alt="Book Cover Preview">
+              </div>
+			  <label for="" class="mt-3">Upload Book</label>
+			  <input class="form-control mt-2" type="file" name="bookPdf" id="bookPdf" accept=".pdf">
+            </div>
+
+            <!-- Right column: Form Fields -->
+            <div class="col-md-8">
+              <div class="mb-3">
+                <div class="">
+                  <label for="bookTitle" class="form-label">Book Title</label>
+                  <input type="text" class="form-control" name="bookTitle" id="bookTitle" placeholder="Enter book title" required>
+                </div>
+              </div>
+
+              <div class="row mb-3">
+                <div class="col-md-4">
+                  <label for="bookPrice" class="form-label">Price</label>
+                  <input type="text" class="form-control" name="bookPrice" id="bookPrice" placeholder="XAF 5000" required>
+                </div>
+                <div class="col-md-4">
+                  <label for="bookPages" class="form-label">Pages</label>
+                  <input type="number" class="form-control" name="bookPages" id="bookPages" placeholder="300" required>
+                </div>
+                <div class="col-md-4">
+                  <label for="bookYear" class="form-label">Published Year</label>
+                  <input type="number" class="form-control" name="bookYear" id="bookYear" placeholder="2025" required>
+                </div>
+              </div>
+
+              <div class="mb-3">
+                <label for="bookTags" class="form-label">Tags / Categories</label>
+                <input type="text" class="form-control" name="bookTags" id="bookTags" placeholder="Horror, Fantasy, Fiction">
+                <small class="text-muted">Separate tags with commas</small>
+              </div>
+
+              <div class="mb-3">
+                <label for="bookDescription" class="form-label">Description</label>
+                <textarea class="form-control" name="bookDescription" id="bookDescription" rows="4" placeholder="Enter a short description"></textarea>
+              </div>
+            </div>
+          </div>
+		  <div class="modal-footer">
+			<button type="button" class="btn btn-secondary rounded-pill" data-bs-dismiss="modal">Discard</button>
+					<button type="submit" name="add-book" class="btn btn-primary rounded-pill" id="submit">Publish</button>
+		  </div>
+        </form>
+      </div>
+        
+    </div>
+  </div>
+</div>
+
+<script src="../../assets/js/jquery.js"></script>
+<script>
+    $(document).ready(function() {
+    const defaultSrc = '../../assets/img/bookcover-placeholder.png'; // initial placeholder
+
+    // Initially set placeholder
+    $('#coverPreview').attr('src', defaultSrc);
+
+    $('#bookCover').on('change', function() {
+      const file = this.files[0];
+
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          $('#coverPreview').attr('src', e.target.result); // replace with uploaded image
+        }
+        reader.readAsDataURL(file);
+      } else {
+        $('#coverPreview').attr('src', defaultSrc); // revert to placeholder if no file
+      }
+    });  
+  });
+</script>
+<?php if(isset($_SESSION['alert'])): ?>
+<script src="../../assets/js/sweetalert.js"></script>
+<script>
+    Swal.fire({
+        title: '<?= $_SESSION['alert']['title'] ?>',
+        text: '<?= $_SESSION['alert']['message'] ?>',
+        icon: '<?= $_SESSION['alert']['type'] ?>'
+    }).then((result) => {
+        <?php if(isset($_SESSION['alert']['redirect'])): ?>
+            window.location.href = '<?= $_SESSION['alert']['redirect'] ?>';
+        
+    });
+</script>
+<?php endif;
+         unset($_SESSION['alert']);
+        endif;
+        ?>
 </body>
 </html>

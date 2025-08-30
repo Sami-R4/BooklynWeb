@@ -79,6 +79,9 @@
     <li class="nav-item" role="presentation">
       <button class="nav-link" id="libraries-tab" data-bs-toggle="tab" data-bs-target="#libraries" type="button" role="tab">Saved</button>
     </li>
+     <li class="nav-item" role="presentation">
+      <button class="nav-link" id="libraries-tab" data-bs-toggle="tab" data-bs-target="#libraries" type="button" role="tab">Following</button>
+    </li>
   </ul>
 
   <!-- PHP: Dummy Favorites -->

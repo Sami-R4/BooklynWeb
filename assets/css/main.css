@@ -33,7 +33,7 @@
     .header h1 {
       font-size: 3rem;
       font-weight: 700;
-      color: var(--primary-clr);
+      color: var(--accent-gold);
     }
     .header h5 {
       font-size: 1.2rem;
@@ -95,403 +95,593 @@
 
     /* Disscussions Section */
     
-/* Slider container */
-.discussions-slider {
-  position: relative;
-  overflow: hidden;
-  margin-top: 1.5rem;
-  padding: 0 2.5rem; /* add side padding so cards don’t get hidden behind buttons */
-}
+    /* Slider container */
+    .discussions-slider {
+      position: relative;
+      overflow: hidden;
+      margin-top: 1.5rem;
+      padding: 0 2.5rem; /* add side padding so cards don't get hidden behind buttons */
+    }
 
-/* Horizontally scrollable container */
-.discussions-track {
-  display: flex;
-  gap: 1.5rem;
-  overflow-x: auto;
-  scroll-behavior: smooth;
-  padding-bottom: 1rem;
-  scrollbar-width: none; /* Firefox */
-}
+    /* Horizontally scrollable container */
+    .discussions-track {
+      display: flex;
+      gap: 1.5rem;
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      padding-bottom: 1rem;
+      scrollbar-width: none; /* Firefox */
+    }
 
-/* Hide scrollbar in WebKit browsers */
-.discussions-track::-webkit-scrollbar {
-  display: none;
-}
+    /* Hide scrollbar in WebKit browsers */
+    .discussions-track::-webkit-scrollbar {
+      display: none;
+    }
 
-/* Single discussion card */
-.discussion-card {
-  background: #fff;
-  border-radius: 14px;
-  box-shadow:
-    0 2px 4px rgba(0, 0, 0, 0.05),
-    0 8px 16px rgba(0, 0, 0, 0.1);
-  padding: 1.5rem 2rem;
-  cursor: pointer;
-  flex: 0 0 320px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  transition: box-shadow 0.3s ease, transform 0.3s ease;
-  border: 1px solid transparent;
-  user-select: none;
-}
+    /* Single discussion card */
+    .discussion-card {
+      background: #fff;
+      border-radius: 14px;
+      box-shadow:
+        0 2px 4px rgba(0, 0, 0, 0.05),
+        0 8px 16px rgba(0, 0, 0, 0.1);
+      padding: 1.5rem 2rem;
+      cursor: pointer;
+      flex: 0 0 320px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: box-shadow 0.3s ease, transform 0.3s ease;
+      border: 1px solid transparent;
+      user-select: none;
+    }
 
-.discussion-card:hover,
-.discussion-card:focus-visible {
-  box-shadow:
-    0 8px 20px rgba(59, 130, 246, 0.3);
-  transform: translateY(-5px);
-  border-color: #3b82f6;
-  outline: none;
-}
+    .discussion-card:hover,
+    .discussion-card:focus-visible {
+      box-shadow:
+        0 8px 20px rgba(59, 130, 246, 0.3);
+      transform: translateY(-5px);
+      border-color: #3b82f6;
+      outline: none;
+    }
 
-/* Title */
-.discussion-title {
-  font-size: 1.3rem;
-  font-weight: 700;
-  color: #1e293b;
-  margin-bottom: 0.75rem;
-  text-decoration: none;
-  line-height: 1.2;
-  transition: color 0.3s ease;
-}
+    /* Title */
+    .discussion-title {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: #1e293b;
+      margin-bottom: 0.75rem;
+      text-decoration: none;
+      line-height: 1.2;
+      transition: color 0.3s ease;
+    }
 
-.discussion-title:hover,
-.discussion-title:focus-visible {
-  color: #2563eb;
-  outline: none;
-}
+    .discussion-title:hover,
+    .discussion-title:focus-visible {
+      color: #2563eb;
+      outline: none;
+    }
 
-/* Snippet */
-.discussion-snippet {
-  font-size: 1rem;
-  color: #475569;
-  flex-grow: 1;
-  margin-bottom: 1.2rem;
-  line-height: 1.5;
-  font-weight: 400;
-}
+    /* Snippet */
+    .discussion-snippet {
+      font-size: 1rem;
+      color: #475569;
+      flex-grow: 1;
+      margin-bottom: 1.2rem;
+      line-height: 1.5;
+      font-weight: 400;
+    }
 
-/* Footer */
-.discussion-footer {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  font-size: 0.85rem;
-  color: #64748b;
-  font-weight: 500;
-}
+    /* Footer */
+    .discussion-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.85rem;
+      color: #64748b;
+      font-weight: 500;
+    }
 
-/* Comments and Likes */
-.comments,
-.likes {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  color: #2563eb;
-}
+    /* Comments and Likes */
+    .comments,
+    .likes {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      color: #2563eb;
+    }
 
-.comments i,
-.likes i {
-  font-size: 1rem;
-  color: #2563eb;
-}
+    .comments i,
+    .likes i {
+      font-size: 1rem;
+      color: #2563eb;
+    }
 
-/* Last activity */
-.last-activity {
-  font-style: italic;
-  white-space: nowrap;
-}
+    /* Last activity */
+    .last-activity {
+      font-style: italic;
+      white-space: nowrap;
+    }
 
-/* Slider Buttons */
-.slider-btn {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background-color: rgba(52, 152, 219, 0.7);
-  border: none;
-  color: white;
-  width: 2.2em;
-  height: 2.2em;
-  border-radius: 50%;
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 1.3em;
-  box-shadow: 0 4px 12px rgba(52, 152, 219, 0.6);
-  transition: background-color 0.3s ease, transform 0.2s ease;
-  z-index: 10;
-  user-select: none;
-}
+    /* Slider Buttons */
+    .slide-div{
+      display: flex;
+      justify-content: space-between;
+      position: absolute;
+      top: 50%;
+      left: 10px;
+      gap: 66em;
+    }
+    .slider-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: rgba(52, 152, 219, 0.7);
+      border: none;
+      color: white;
+      width: 2.2em;
+      height: 2.2em;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 1.3em;
+      box-shadow: 0 4px 12px rgba(52, 152, 219, 0.6);
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      z-index: 10;
+      user-select: none;
+    }
 
-.slider-btn:hover {
-  background-color: rgba(41, 128, 185, 0.9);
-  transform: translateY(-50%) scale(1.1);
-}
+    .slider-btn:hover {
+      background-color: rgba(41, 128, 185, 0.9);
+      transform: translateY(-50%) scale(1.1);
+    }
 
-.left-slide {
-  left: 0.3rem;
-  /* position slightly outside so it doesn't cover card */
-  margin-left: -1.1rem;
-}
+    .left-slide {
+      left: 0.3rem;
+      margin-left: -1.1rem;
+    }
 
-.right-slide {
-  right: 0.3rem;
-  margin-right: -1.1rem;
-}
+    .right-slide {
+      right: 0.3rem;
+      margin-right: -1.1rem;
+    }
 
-.slider-btn:focus-visible {
-  outline: 3px solid rgba(41, 128, 185, 0.7);
-  outline-offset: 3px;
-}
+    .slider-btn:focus-visible {
+      outline: 3px solid rgba(41, 128, 185, 0.7);
+      outline-offset: 3px;
+    }
 
-/* Responsive adjustments */
-@media (max-width: 900px) {
-  .discussion-card {
-    flex: 0 0 280px;
-  }
-}
+    /* Responsive adjustments */
+    @media (max-width: 900px) {
+      .discussion-card {
+        flex: 0 0 280px;
+      }
+    }
 
-@media (max-width: 600px) {
-  .discussion-card {
-    flex: 0 0 220px;
-  }
-  .discussions-slider {
-    padding: 0 1.5rem;
-  }
-  .slider-btn {
-    width: 1.8em;
-    height: 1.8em;
-    font-size: 1.1em;
-  }
-  .left-slide {
-    margin-left: -0.8rem;
-  }
-  .right-slide {
-    margin-right: -0.8rem;
-  }
-}
+    @media (max-width: 600px) {
+      .discussion-card {
+        flex: 0 0 220px;
+      }
+      .discussions-slider {
+        padding: 0 1.5rem;
+      }
+      .slider-btn {
+        width: 1.8em;
+        height: 1.8em;
+        font-size: 1.1em;
+      }
+      .left-slide {
+        margin-left: -0.8rem;
+      }
+      .right-slide {
+        margin-right: -0.8rem;
+      }
+    }
 
-/* New Releases Section */
-/* Section styling */
-.new-releases {
-  padding: 2rem;
-  background-color: #F8FAFC; /* Skybook Background */
-}
+    /* New Releases Section */
+    /* Section styling */
+    .new-releases {
+      padding: 2rem;
+      background-color: #F8FAFC; /* Skybook Background */
+    }
 
-.section-title {
-  font-size: 1.8rem;
-  margin-bottom: 1.5rem;
-  font-weight: bold;
-  color: #1E293B; /* Secondary */
-}
+    .section-title {
+      font-size: 2rem;
+          font-weight: 700;
+          margin-bottom: 1rem;
+          padding-left: 1rem;
+          border-left: 5px solid var(--accent-gold);
+    }
 
-/* Card layout */
-.cards-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1.5rem;
-}
+    /* Card layout */
+    .cards-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+    }
 
-.book-card {
-  position: relative;
-  background: #FFFFFF;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.book-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-}
-
-/* Badge */
-.badge-new {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  background-color: #3B82F6; /* Primary */
-  color: white;
-  font-size: 0.75rem;
-  font-weight: bold;
-  padding: 5px 10px;
-  border-radius: 50px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.15);
-}
-
-/* Book image */
-.book-card img {
-  width: 100%;
-  height: 320px;
-  object-fit: cover;
-}
-
-/* Card body */
-.card-body {
-  padding: 1rem;
-}
-
-.book-title {
-  font-size: 1.1rem;
-  font-weight: bold;
-  color: #1E293B;
-  margin-bottom: 0.3rem;
-}
-
-.book-author {
-  font-size: 0.9rem;
-  color: #64748B;
-  margin-bottom: 0.6rem;
-}
-
-.book-price {
-  font-size: 1rem;
-  color: #F59E0B; /* Accent gold */
-  font-weight: bold;
-  margin-bottom: 0.5rem;
-}
-
-/* Buttons */
-.card-buttons {
-  display: flex;
-}
-
-.butn {
-  flex: 1;
-  padding: 8px;
-  font-size: 0.85rem;
-  border: none;
-  cursor: pointer;
-  transition: background 0.2s ease;
-}
-
-.btn-cart {
-  background-color: #3B82F6;
-  color: white;
-  border-top-left-radius: 6px;
-  border-bottom-left-radius: 6px;
-}
-
-.btn-cart:hover {
-  background-color: #2563EB;
-}
-
-.btn-details {
-  background-color: #eee;;
-  color: #000;
-  border-top-right-radius: 6px;
-  border-bottom-right-radius: 6px;
-}
-
-.btn-details:hover {
-  background-color: #d3d0d0;
-  color: #000;
-}
-
-/* Mobile adjustments */
-@media (max-width: 500px) {
-  .book-card img {
-    height: 240px;
-  }
-}
-
-/* New Releases Section */
-.newReleases{
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 0.5rem;
-}
-.card {
+    .book-card {
+      position: relative;
+      background: #FFFFFF;
       border-radius: 12px;
       overflow: hidden;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-      transition: all 0.3s ease;
-    }
-    .card:hover{
-      box-shadow: 0 4px 5px rgba(0, 0, 0, 0.3);
-      transform: translateY(-5px);
-    }
-    .card img{
-      height: 220px;
-      object-fit: cover;
-      width: 100%;
-      display: block;
-      transition: all 0.3s ease-in-out;
-      transform: scale(1.1);
-    }
-    .card img:hover{
-      transform: scale(1.0);
-    }
-    .card-footer button {
-      border-radius: 20px;
-      font-size: 0.85rem;
-      padding: 6px 14px;
-    }
-    .btn-flex .add-btn{
-        background: #2563EB;
-        color: var(--light);
-        border: none;
-    }
-    .btn-flex .view-btn{
-        background: var(--accent-gold);
-        border: none;
-    }
-    .btn-flex .add-btn:hover{
-        background: #3731a7;
-        color: #fff;
-    }
-    .btn-flex .view-btn:hover{
-        background: #fffd6e;
-    }
-    .category-badge{
-      position: absolute;
-      top: 15px;
-      right: 15px;
-      background: rgba(255,255,255,0.9);
-      color: var(--primary);
-      padding: 5px 10px;
-      border-radius: 20px;
-      font-size: 0.8rem;
-      font-weight: 600;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    }
-    .see-more{
-      display: flex;
-      justify-content: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
-    /* Why Us */
-    .why{
-      background-color: #ececec;
+    .book-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
     }
-    .card-container{
+
+    /* Badge */
+    .badge-new {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background-color: #3B82F6; /* Primary */
+      color: white;
+      font-size: 0.75rem;
+      font-weight: bold;
+      padding: 5px 10px;
+      border-radius: 50px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+    }
+
+    /* Book image */
+    .book-card img {
+      width: 100%;
+      height: 320px;
+      object-fit: cover;
+    }
+
+    /* Card body */
+    .card-body {
+      padding: 1rem;
+    }
+
+    .book-title {
+      font-size: 1.1rem;
+      font-weight: bold;
+      color: #1E293B;
+      margin-bottom: 0.3rem;
+    }
+
+    .book-author {
+      font-size: 0.9rem;
+      color: #64748B;
+      margin-bottom: 0.6rem;
+    }
+
+    .book-price {
+      font-size: 1rem;
+      color: #F59E0B; /* Accent gold */
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+    }
+
+    /* Buttons */
+    .card-buttons {
+      display: flex;
+    }
+
+    .butn {
+      flex: 1;
+      padding: 8px;
+      font-size: 0.85rem;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s ease;
+    }
+
+    .btn-cart {
+      background-color: #3B82F6;
+      color: white;
+      border-top-left-radius: 6px;
+      border-bottom-left-radius: 6px;
+    }
+
+    .btn-cart:hover {
+      background-color: #2563EB;
+    }
+
+    .btn-details {
+      background-color: #eee;;
+      color: #000;
+      border-top-right-radius: 6px;
+      border-bottom-right-radius: 6px;
+    }
+
+    .btn-details:hover {
+      background-color: #d3d0d0;
+      color: #000;
+    }
+
+    /* Mobile adjustments */
+    @media (max-width: 500px) {
+      .book-card img {
+        height: 240px;
+      }
+    }
+
+    /* New Releases Section */
+    .newReleases{
       display: grid;
-      grid-template-columns: 33% 33% 33%;
-      gap: 0.5em;
-      align-items: center;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.5rem;
     }
-    .card-container .card-header{
-      display: flex;
-      align-items: center;
-      gap: 1em;
-    }
-    .card-header .header-title{
-      font-size: 25px;
-    }
-    .card-header .icon{
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 55px;
-      width: 55px;
-      border-radius: 50%;
-      background: rgba(255,218,92,0.4);
-      padding: 10px 13px;
-    }
-    .icon i{
-      color: #f79e04;
-      font-size: 22px;
-    }
+    .card {
+          border-radius: 12px;
+          overflow: hidden;
+          box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+          transition: all 0.3s ease;
+        }
+        .card:hover{
+          box-shadow: 0 4px 5px rgba(0, 0, 0, 0.3);
+          transform: translateY(-5px);
+        }
+        .card img{
+          height: 220px;
+          object-fit: cover;
+          width: 100%;
+          display: block;
+          transition: all 0.3s ease-in-out;
+          transform: scale(1.1);
+        }
+        .card img:hover{
+          transform: scale(1.0);
+        }
+        .card-footer button {
+          border-radius: 20px;
+          font-size: 0.85rem;
+          padding: 6px 14px;
+        }
+        .btn-flex .add-btn{
+            background: #2563EB;
+            color: var(--light);
+            border: none;
+        }
+        .btn-flex .view-btn{
+            background: var(--accent-gold);
+            border: none;
+        }
+        .btn-flex .add-btn:hover{
+            background: #3731a7;
+            color: #fff;
+        }
+        .btn-flex .view-btn:hover{
+            background: #fffd6e;
+        }
+        .category-badge{
+          position: absolute;
+          top: 15px;
+          right: 15px;
+          background: rgba(255,255,255,0.9);
+          color: var(--primary);
+          padding: 5px 10px;
+          border-radius: 20px;
+          font-size: 0.8rem;
+          font-weight: 600;
+          box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .see-more{
+          display: flex;
+          justify-content: center;
+        }
+
+        /* Why Us */
+        .why{
+          background-color: #ececec;
+        }
+        .card-container{
+          display: grid;
+          grid-template-columns: 33% 33% 33%;
+          gap: 0.5em;
+          align-items: center;
+        }
+        .card-container .card-header{
+          display: flex;
+          align-items: center;
+          gap: 1em;
+        }
+        .card-header .header-title{
+          font-size: 25px;
+        }
+        .card-header .icon{
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          height: 55px;
+          width: 55px;
+          border-radius: 50%;
+          background: rgba(255,218,92,0.4);
+          padding: 10px 13px;
+        }
+        .icon i{
+          color: #f79e04;
+          font-size: 22px;
+        }
+
+        /* Author Display */
+        .slider-section {
+          padding: 3rem 1rem;
+        }
+
+        .slider-header {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-bottom: 1.5rem;
+        }
+
+        .slider-header h3 {
+          font-weight: 600;
+          color: #1E293B;
+        }
+
+        .author-slider-wrapper {
+          position: relative;
+          overflow: hidden;
+          padding: 0 3rem; /* Add padding to make space for buttons */
+        }
+
+        .author-slider {
+          display: flex;
+          gap: 1rem;
+          transition: transform 0.7s ease; /* smooth animation */
+        }
+
+        .author-card {
+          min-width: calc((100% - 4rem) / 5); /* 5 cards visible */
+          background-color: #FFFFFF;
+          border-radius: 12px;
+          box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+          text-align: center;
+          padding: 1rem;
+          cursor: pointer;
+          flex-shrink: 0;
+          transition: transform 0.3s;
+        }
+
+        .author-card:hover {
+          transform: translateY(-5px);
+        }
+
+        .author-card img {
+          width: 80px;
+          height: 80px;
+          border-radius: 50%;
+          object-fit: cover;
+          margin-bottom: 0.5rem;
+          border: 2px solid #3B82F6;
+        }
+
+        .author-name {
+          font-weight: 600;
+          font-size: 0.95rem;
+          color: #1E293B;
+          margin-bottom: 0.25rem;
+        }
+
+        .author-badges {
+          display: flex;
+          justify-content: center;
+          flex-wrap: wrap;
+          gap: 0.25rem;
+        }
+
+        .badge {
+          background-color: #FCD34D;
+          color: #1E293B;
+          padding: 0.2rem 0.4rem;
+          font-size: 0.7rem;
+          border-radius: 0.25rem;
+        }
+
+        .slider-controls {
+          display: flex;
+          justify-content: space-between;
+          position: absolute;
+          top: 50%;
+          left: 0;
+          right: 0;
+          transform: translateY(-50%);
+          pointer-events: none; /* Allow clicks to pass through to buttons */
+          z-index: 5;
+        }
+
+        .slider-btn {
+          background-color: #3B82F6;
+          color: white;
+          border: none;
+          border-radius: 50%;
+          width: 40px;
+          height: 40px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          pointer-events: auto; /* Re-enable clicks on buttons */
+          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+          position: absolute;
+          top: 50%;
+        }
+
+        .slider-btn:hover {
+          background-color: #2563EB;
+        }
+
+        .prev-btn {
+          margin-left: -20px; /* Adjust to align with slider edge */
+        }
+
+        .next-btn {
+          margin-right: -20px; /* Adjust to align with slider edge */
+        }
+
+        .author-info{
+          display: grid;
+          grid-template-columns: 1fr 1fr 1fr;
+        }
+
+        .author-info i{
+          color: #3b82f6;
+        }
+
+        .author-card .author-name:hover{
+          color: #2563eb;
+        }
+
+        .author-card button{
+          width: 100%;
+          padding: 5px 8px;
+          border: none;
+          border-radius: 30px;
+          background: #3B82F6;
+          color: #fff;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 1200px) {
+          .author-card {
+            min-width: calc((100% - 3rem) / 4); /* 4 cards visible on medium screens */
+          }
+        }
+
+        @media (max-width: 992px) {
+          .author-card {
+            min-width: calc((100% - 2rem) / 3); /* 3 cards visible on tablets */
+          }
+        }
+
+        @media (max-width: 768px) {
+          .author-card {
+            min-width: calc((100% - 1rem) / 2); /* 2 cards visible on small tablets */
+          }
+          
+          .author-slider-wrapper {
+            padding: 0 2.5rem; /* Reduce padding on mobile */
+          }
+          
+          .slider-btn {
+            width: 35px;
+            height: 35px;
+          }
+          
+          .prev-btn {
+            margin-left: -15px;
+          }
+          
+          .next-btn {
+            margin-right: -15px;
+          }
+        }
+
+        @media (max-width: 576px) {
+          .author-card {
+            min-width: 100%; /* 1 card visible on mobile */
+          }
+        }

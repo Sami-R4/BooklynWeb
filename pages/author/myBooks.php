@@ -114,7 +114,7 @@
         padding-right: 15px;
         border-top-right-radius: 10px;
     }
-    table tr:hover{
+    table tr:hover td{
         background: whitesmoke;
     }
     table button{
@@ -164,11 +164,22 @@
                 <th>Actions</th>
             </thead>
             <tbody>
+                 <?php include ('../../app/dbconfig.php');
+                 $author_id = $_SESSION['author_id'];
+            $sql = "SELECT * FROM books WHERE `author_id` = '$author_id'";
+            $qry = mysqli_query($conn, $sql);
+            while($result = mysqli_fetch_assoc($qry)){
+                $id =  $result['book_id'];
+                $cover = $result['cover_image'];
+                $title  = $result['book_title'];
+                $category = $result['genre'];
+                $price = $result['price'];
+             ?>
                 <tr>
-                    <td><img src="../../assets/img/glitch.jpg" width="50" alt="image cover"></td>
-                    <td>Glitch</td>
-                    <td>Thriller, Horror</td>
-                    <td>XAF 12000</td>
+                    <td><img src="../../app/<?php echo $cover ?>" width="50" alt="image cover"></td>
+                    <td><?php echo $title ?></td>
+                    <td><?php echo $category ?></td>
+                    <td>XAF <?php echo $price ?></td>
                     <td>110</td>
                     <td class="status">Pending</td>
                     <td>
@@ -177,33 +188,10 @@
                         <button class="del"><i class="fas fa-trash"></i></button>
                     </td>
                 </tr>
-                <tr>
-                    <td><img src="../../assets/img/redwolf.jpeg" width="50" alt="image cover"></td>
-                    <td>Red Wolf</td>
-                    <td>Thriller, Horror</td>
-                    <td>XAF 12000</td>
-                    <td>110</td>
-                    <td class="status">Uploaded</td>
-                    <td>
-                        <button class="view"><i class="fas fa-eye"></i></button>
-                        <button class="edit"><i class="fas fa-pen-to-square"></i></button>
-                        <button class="del"><i class="fas fa-trash"></i></button>
-                    </td>
-                </tr>
-                <tr>
-                    <td><img src="../../assets/img/immortals.jpg" width="50" alt="image cover"></td>
-                    <td>Immortals</td>
-                    <td>Fiction, Horror</td>
-                    <td>XAF 12000</td>
-                    <td>110</td>
-                    <td clas="status">Draft</td>
-                    <td>
-                        <button class="view"><i class="fas fa-eye"></i></button>
-                        <button class="edit"><i class="fas fa-pen-to-square"></i></button>
-                        <button class="del"><i class="fas fa-trash"></i></button>
-                    </td>
-                </tr>
             </tbody>
+             <?php
+            }
+            ?>
          </table>
     </div>
 

@@ -61,8 +61,8 @@ if(!isset($session)){
   </a>
 </li>
 
-      <li>
-        <a class="nav-link <?php echo $currentPage == 'settings.php' ? 'active' : '' ?>" href="settings.php"><i class="fas fa-cog"></i> Settings</a>
+       <li>
+        <a class="nav-link <?php echo $currentPage == 'settings.php' ? 'active' : '' ?>" href="achivements.php"><i class="fas fa-trophy"></i> Achievements</a>
       </li>
     </ul>
   </div>
@@ -74,6 +74,7 @@ if(!isset($session)){
     <img src="../../assets/img/placeholder.jpg" alt="User Profile" id="userDropdownToggle">
     </span>
     <div class="user-dropdown" id="userDropdown">
+      <a href="settings.php"><i class="fa-solid fa-cog"></i> Settings</a>
       <a href="../index.php"><i class="fa-solid fa-arrow-rotate-left"></i> Return to Home</a>
       <a href="logout.php"><i class="fas fa-sign-out-alt"></i> Logout</a>
     </div>

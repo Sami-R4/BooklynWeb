@@ -1,122 +1,165 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Author Dashboard - Settings</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-  <style>
-    body {
-      background-color: #F8FAFC; /* Booklyn bg */
-      font-family: 'Segoe UI', sans-serif;
-    }
-    .settings-card {
-      background: #fff;
-      border-radius: 12px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-      padding: 20px;
-      margin-bottom: 1.5rem;
-    }
-    .nav-tabs .nav-link.active {
-      background-color: #3B82F6; /* Booklyn primary */
-      color: #fff !important;
-      border-radius: 8px 8px 0 0;
-    }
-    .nav-tabs .nav-link {
-      color: #1E293B; /* secondary text */
-      font-weight: 500;
-    }
-    @media (max-width: 768px) {
-      /* Hide tabs on mobile */
-      .nav-tabs {
-        display: none;
-      }
-      .tab-content>.tab-pane {
-        display: block !important;
-        opacity: 1;
-      }
-    }
-  </style>
-</head>
-<body>
+<!-- Author Slider Section -->
+<div class="author-slider-container">
+  <button class="prev-btn"><i class="fas fa-chevron-left"></i></button>
 
-<div class="container py-5">
-  <h2 class="mb-4 fw-bold">Settings</h2>
+  <div class="author-slider-wrapper">
+    <div class="author-slider">
+      <?php
+        // DB connection
+        $conn = new mysqli("localhost", "root", "", "booklyn");
+        if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+        }
 
-  <!-- Tabs (desktop only) -->
-  <ul class="nav nav-tabs mb-3" id="settingsTabs" role="tablist">
-    <li class="nav-item">
-      <button class="nav-link active" id="account-tab" data-bs-toggle="tab" data-bs-target="#account" type="button">Account</button>
-    </li>
-    <li class="nav-item">
-      <button class="nav-link" id="privacy-tab" data-bs-toggle="tab" data-bs-target="#privacy" type="button">Privacy</button>
-    </li>
-    <li class="nav-item">
-      <button class="nav-link" id="support-tab" data-bs-toggle="tab" data-bs-target="#support" type="button">Support</button>
-    </li>
-    <li class="nav-item">
-      <button class="nav-link" id="danger-tab" data-bs-toggle="tab" data-bs-target="#danger" type="button">Danger Zone</button>
-    </li>
-  </ul>
+        $sql = "SELECT name, picture, followers, books, rating FROM authors";
+        $result = $conn->query($sql);
 
-  <!-- Tab Content -->
-  <div class="tab-content">
-    
-    <!-- Account Settings -->
-    <div class="tab-pane fade show active" id="account">
-      <div class="settings-card">
-        <h5 class="fw-semibold mb-3">Account Settings</h5>
-        <form>
-          <div class="mb-3">
-            <label class="form-label">Change Password</label>
-            <input type="password" class="form-control" placeholder="New Password">
-          </div>
-          <div class="mb-3">
-            <input type="password" class="form-control" placeholder="Confirm Password">
-          </div>
-          <button class="btn btn-primary">Update Password</button>
-        </form>
-      </div>
+        if ($result->num_rows > 0) {
+            foreach ($result as $row) {
+                echo '
+                <div class="author-card">
+                  <img src="../app/author_pics/' . htmlspecialchars($row['picture']) . '" alt="' . htmlspecialchars($row['name']) . '">
+                  <div class="author-name">' . htmlspecialchars($row['name']) . '</div>
+                  <div class="author-info">
+                    <span class="follower-count">
+                      <i class="fas fa-users"></i>
+                      <p>' . htmlspecialchars($row['followers']) . '</p>
+                    </span>
+                    <span class="book-count">
+                      <i class="fas fa-book-open"></i>
+                      <p>' . htmlspecialchars($row['books']) . '</p>
+                    </span>
+                    <span class="rating">
+                      <i class="fas fa-star"></i>
+                      <p>' . htmlspecialchars($row['rating']) . '</p>
+                    </span>
+                  </div>
+                  <div class="btn-wrapper">
+                    <button class="btn-follow">Follow</button>
+                  </div>
+                </div>
+                ';
+            }
+        } else {
+            echo "<p>No authors found.</p>";
+        }
+        $conn->close();
+      ?>
     </div>
-
-    <!-- Privacy -->
-    <div class="tab-pane fade" id="privacy">
-      <div class="settings-card">
-        <h5 class="fw-semibold mb-3">Privacy Options</h5>
-        <div class="form-check mb-2">
-          <input class="form-check-input" type="checkbox" id="showProfile" checked>
-          <label class="form-check-label" for="showProfile">Show my profile to other users</label>
-        </div>
-        <div class="form-check mb-2">
-          <input class="form-check-input" type="checkbox" id="emailUpdates">
-          <label class="form-check-label" for="emailUpdates">Receive email updates</label>
-        </div>
-        <button class="btn btn-primary mt-2">Save Changes</button>
-      </div>
-    </div>
-
-    <!-- Support -->
-    <div class="tab-pane fade" id="support">
-      <div class="settings-card">
-        <h5 class="fw-semibold mb-3">Contact & Support</h5>
-        <p>If you need help, reach out to us:</p>
-        <p>Email: <a href="mailto:support@booklyn.com">support@booklyn.com</a></p>
-        <button class="btn btn-outline-primary">Open Support Ticket</button>
-      </div>
-    </div>
-
-    <!-- Danger Zone -->
-    <div class="tab-pane fade" id="danger">
-      <div class="settings-card">
-        <h5 class="fw-semibold text-danger mb-3">Danger Zone</h5>
-        <p>Deleting your account is permanent and cannot be undone.</p>
-        <button class="btn btn-danger">Delete Account</button>
-      </div>
-    </div>
-
   </div>
+
+  <button class="next-btn"><i class="fas fa-chevron-right"></i></button>
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+$(document).ready(function() {
+  const slider = $('.author-slider');
+  const cards = $('.author-card');
+  const cardCount = cards.length;
+  const cardWidth = cards.outerWidth(true);
+  const visibleCards = 5;
+  let currentPosition = 0;
+  let autoSlideInterval;
+
+  // Clone first few cards for infinite effect
+  for (let i = 0; i < visibleCards; i++) {
+    slider.append(cards.eq(i).clone());
+  }
+
+  function updateSliderPosition() {
+    slider.css('transform', `translateX(-${currentPosition * cardWidth}px)`);
+  }
+
+  function slideNext() {
+    if (currentPosition >= cardCount) {
+      slider.css('transition', 'none');
+      currentPosition = 0;
+      updateSliderPosition();
+      slider[0].offsetHeight; // force reflow
+      slider.css('transition', 'transform 0.7s ease');
+    }
+    currentPosition++;
+    updateSliderPosition();
+  }
+
+  function slidePrev() {
+    if (currentPosition <= 0) {
+      slider.css('transition', 'none');
+      currentPosition = cardCount;
+      updateSliderPosition();
+      slider[0].offsetHeight; // force reflow
+      slider.css('transition', 'transform 0.7s ease');
+    }
+    currentPosition--;
+    updateSliderPosition();
+  }
+
+  function startAutoSlide() {
+    autoSlideInterval = setInterval(slideNext, 3000);
+  }
+
+  function stopAutoSlide() {
+    clearInterval(autoSlideInterval);
+  }
+
+  $('.next-btn').on('click', function() {
+    stopAutoSlide();
+    slideNext();
+    startAutoSlide();
+  });
+
+  $('.prev-btn').on('click', function() {
+    stopAutoSlide();
+    slidePrev();
+    startAutoSlide();
+  });
+
+  $('.author-slider-wrapper').hover(
+    function() { stopAutoSlide(); },
+    function() { startAutoSlide(); }
+  );
+
+  startAutoSlide();
+});
+</script>
+
+<style>
+.author-slider-container {
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.author-slider-wrapper {
+  overflow: hidden;
+  width: 100%;
+}
+
+.author-slider {
+  display: flex;
+  transition: transform 0.7s ease;
+}
+
+.author-card {
+  flex: 0 0 auto;
+  width: 200px;
+  margin: 0 10px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  text-align: center;
+  padding: 15px;
+}
+
+.prev-btn, .next-btn {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #1E293B;
+  z-index: 10;
+}
+</style>
