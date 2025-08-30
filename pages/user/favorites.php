@@ -74,13 +74,10 @@
       <button class="nav-link active" id="books-tab" data-bs-toggle="tab" data-bs-target="#books" type="button" role="tab">Books</button>
     </li>
     <li class="nav-item" role="presentation">
-      <button class="nav-link" id="libraries-tab" data-bs-toggle="tab" data-bs-target="#libraries" type="button" role="tab">Authors</button>
-    </li>
+     <button class="nav-link" id="libraries-tab" data-bs-toggle="tab" data-bs-target="#libraries" type="button" role="tab">Following</button>
+   </li>
     <li class="nav-item" role="presentation">
       <button class="nav-link" id="libraries-tab" data-bs-toggle="tab" data-bs-target="#libraries" type="button" role="tab">Saved</button>
-    </li>
-     <li class="nav-item" role="presentation">
-      <button class="nav-link" id="libraries-tab" data-bs-toggle="tab" data-bs-target="#libraries" type="button" role="tab">Following</button>
     </li>
   </ul>
 

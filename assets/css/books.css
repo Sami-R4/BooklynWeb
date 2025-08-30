@@ -224,4 +224,16 @@
       font-weight: bold;
       color: var(--primary-clr);
     }
+    .input-group label{
+      width: 100%;
+      background: #fff;
+    }
+    .input-group input{
+      background: #fff;
+    }
+    .flex{
+      display: flex;
+      gap: 10px;
+      flex-direction: column;
+    }
     

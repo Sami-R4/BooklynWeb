@@ -40,22 +40,7 @@ include("../includes/navbar.php");
 
     <!-- Main content -->
     <div class="container py-5">
-        <!-- Filter chips -->
-        <div class="mb-5 text-center animate__animated animate__fadeIn animate__delay-2s">
-            <div class="mb-3">
-                <h4 class="d-inline-block me-3">Filter by:</h4>
-                <div class="d-inline-block">
-                    <span class="filter-chip active">All</span>
-                    <span class="filter-chip">Fiction</span>
-                    <span class="filter-chip">Non-Fiction</span>
-                    <span class="filter-chip">Science</span>
-                    <span class="filter-chip">Biography</span>
-                    <span class="filter-chip">History</span>
-                    <span class="filter-chip">Fantasy</span>
-                </div>
-            </div>
-        </div>
-        
+       
         <!-- Books grid -->
           <section class="container my-5">
     <h2 class="section-title" data-aos="fade-down-left" data-aos-delay="100" data-aos-duration="1000">Featured Books</h2>
@@ -94,12 +79,13 @@ while($book = mysqli_fetch_assoc($qry)){
         </div>
         <div class="card-footer d-flex justify-content-between bg-light">
             <span class="d-flex gap-2 btn-flex">
-                <button class="btn btn-sm add-btn">Buy Now</button>
+                <button class="btn btn-sm add-btn" data-bs-toggle="modal" data-bs-target="#buyModal'.$book['book_id'].'">Buy Now</button>
                 <button class="btn btn-sm view-btn" data-bs-toggle="modal" data-bs-target="#bookModal'.$book['book_id'].'">Details</button>
             </span>
             <button class="btn btn-sm btn-fav"><i class="fa-regular fa-heart"></i></button>
         </div>
     </div>
+    
 
     <!-- Modal -->
     <div class="modal fade" id="bookModal'.$book['book_id'].'" tabindex="-1" aria-labelledby="bookModalLabel'.$book['book_id'].'" aria-hidden="true">
@@ -126,7 +112,7 @@ while($book = mysqli_fetch_assoc($qry)){
             </div>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-primary">Add to Cart</button>
+            <a href="../app/add_to_cart.php?book_id=<?php echo $row["book_id"]; ?>"><button type="button" class="btn btn-primary">Add to Cart</button></a>
             <button type="button" class="btn btn-success">Buy Now</button>
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Read Preview</button>
           </div>
@@ -136,6 +122,67 @@ while($book = mysqli_fetch_assoc($qry)){
       </div>
     </div>
     ';
+    echo '<!-- Modal -->
+    <div class="modal fade" id="buyModal'.$book['book_id'].'" tabindex="-1" aria-labelledby="buyModalLabel'.$book['book_id'].'" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="buyModalLabel'.$book['book_id'].'">Enter Account Details</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="row">
+              <div class="col-md-4">
+                <img src="../app/'.$book['cover_image'].'" class="img-fluid" alt="Book cover">
+              </div>
+              <div class="col-md-8">
+                <div class="mb-3 input-group">
+                        <label class="text-yellow">Amount (FCFA)</label>
+                        <input type="text" class="form-control bg-dark text-white" 
+                               name="amount" required value="'.$book['price'].'">
+                    </div>
+                    
+                    <div class="mb-3 input-group flex">
+                        <label class="text-yellow">Payment Method</label>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="method" 
+                                   id="mtn" value="mtn" style="background: #fff;" required>
+                            <label class="form-check-label" for="mtn">
+                                MTN Mobile Money
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="method" 
+                                   id="orange" value="orange">
+                            <label class="form-check-label" for="orange">
+                                Orange Money
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="method" 
+                                   id="visa-card" value="visa-card">
+                            <label class="form-check-label" for="visa-card">
+                                Visa Card
+                            </label>
+                        </div>
+                    </div>
+                    <div class="mb-3 input-group">
+                        <label class="text-yellow">Enter Phone/Account Number</label>
+                        <input type="text" class="form-control bg-dark text-white" 
+                               name="amount" required placeholder="XXXXXXXX">
+                    </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-success">Buy '.$book['book_title'].'</button>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
+
+          
+        </div>
+      </div>
+    </div>';
 }
 ?>
 

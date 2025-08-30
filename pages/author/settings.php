@@ -136,7 +136,7 @@
        <div>
       <div class="mb-3">
         <label class="form-label">Display Name</label>
-        <input type="text" class="form-control" placeholder="Your pen name">
+        <input type="text" class="form-control" placeholder="Your pen name" value="<?=$username?>">
       </div>
 
       <!-- Bio -->
@@ -233,8 +233,11 @@
         <div class="card-header text-danger"><i class="fa-solid fa-triangle-exclamation me-2"></i> Danger Zone</div>
         <div class="card-body">
           <p class="text-muted">Be careful — these actions cannot be undone.</p>
-          <button class="btn btn-danger me-2">Deactivate Account</button>
-          <button class="btn btn-outline-danger">Delete Account</button>
+          <form action="../../app/crud.php" method="post">
+            <input type="hidden" name="id" value="<?=$user_id?>">
+            <button class="btn btn-danger me-2">Deactivate Account</button>
+            <button class="btn btn-outline-danger" name="del_acc">Delete Account</button>
+          </form>
         </div>
       </div>
     </div>

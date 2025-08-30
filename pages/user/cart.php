@@ -44,13 +44,11 @@ $cartItems = [
     'title' => 'Glitch',
     'author' => 'Matt Haig',
     'cover' => 'glitch.jpg',
-    'status' => 'Free'
   ],
   [
     'title' => 'Purpose',
     'author' => 'Samuel Wilkinson',
     'cover' => 'purpose.jpeg',
-    'status' => 'For Sale'
   ]
 ];
 //checking if cart is empty
@@ -73,12 +71,11 @@ $isEmpty = count($cartItems) === 0;
             <div class="card-body">
               <h5 class="card-title"><?= $item['title'] ?></h5>
               <p class="card-text text-muted">by <?= $item['author'] ?></p>
-              <span class="badge bg-success"><?= $item['status'] ?></span>
             </div>
             <div class="card-footer bg-white border-top-0 d-flex justify-content-between align-items-center">
                 <span class="d-flex gap-3">
                <button class="btn btn-sm btn-outline-danger">Remove <i class="fa-solid fa-heart-crack"></i></button>
-               <button class="btn btn-sm btn-success">Buy & Download <i class="fa-solid fa-download"></i></button>
+               <button class="btn btn-sm btn-success">Buy Now <i class="fa-solid fa-download"></i></button>
                 </span>
             </div>
 

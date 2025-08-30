@@ -183,9 +183,11 @@
                     <td>110</td>
                     <td class="status">Pending</td>
                     <td>
-                        <button class="view"><i class="fas fa-eye"></i></button>
-                        <button class="edit"><i class="fas fa-pen-to-square"></i></button>
-                        <button class="del"><i class="fas fa-trash"></i></button>
+                        <form action="../../app/crud.php" method="post">
+                            <input type="hidden" name="id" value="<?=$id?>"/>
+                            <button class="edit"><i class="fas fa-pen-to-square"></i></button>
+                            <button class="del" name="del"><i class="fas fa-trash"></i></button>
+                        </form>
                     </td>
                 </tr>
             </tbody>
