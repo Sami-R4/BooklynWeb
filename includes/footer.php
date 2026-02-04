@@ -7,12 +7,9 @@
 </head>
 <style>
     *{
-        font-family: "Manrope";
+        font-family: "DM Sans", sans-serif;
     }
-    @font-face {
-        font-family: "Manrope";
-        src: url("../fonts/MANROPE-VARIABLEFONT_WGHT.TTF");
-    }
+    /* Using DM Sans via Google Fonts (removed local Manrope @font-face) */
     .footer{
         display: grid;
         grid-template-columns: repeat(3, 1fr);

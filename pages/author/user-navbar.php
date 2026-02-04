@@ -55,6 +55,8 @@ $currentPage = basename($_SERVER['PHP_SELF']);
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
   <!-- Favicon -->
     <link rel="shortcut icon" href="../../assets/img/myLogo.png" type="image/x-icon">
+  <!-- Google Fonts: DM Sans and Urbanist -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;700&family=Urbanist:wght@300;400;600;700;800&display=swap">
 </head>
 <body>
 

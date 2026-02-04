@@ -1,7 +1,4 @@
-@font-face {
-      font-family: "Urbanist";
-      src: url('../fonts/URBANIST-VARIABLEFONT_WGHT.TTF');
-    }
+/* Using Urbanist via Google Fonts (removed local Urbanist @font-face) */
     * {
       margin: 0;
       padding: 0;

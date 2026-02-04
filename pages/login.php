@@ -25,7 +25,7 @@ if(isset($_SESSION['error'])){
         padding: 0;
         margin: 0;
         box-sizing: border-box;
-        font-family: "Manrope";
+        font-family: "DM Sans", sans-serif;
     }
     :root{
     --primary-clr: #3B82F6;
@@ -34,10 +34,7 @@ if(isset($_SESSION['error'])){
     --bg-clr: #F8FAFC;
     --pure-white: #FFFFFF;
 }
-@font-face {
-    font-family: "Manrope";
-    src: url('../fonts/MANROPE-VARIABLEFONT_WGHT.TTF');
-}
+/* Using DM Sans via Google Fonts (removed local Manrope @font-face) */
 
 body{
     display: flex;

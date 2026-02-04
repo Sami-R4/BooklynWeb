@@ -14,13 +14,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Navbar</title>
     <link rel="stylesheet" href="../assets/css/bootstrap.css">  
+    <!-- Google Fonts: DM Sans and Urbanist -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;700&family=Urbanist:wght@300;400;600;700;800&display=swap">
 </head>
 <style>
     *{
         padding: 0;
         margin: 0;
         box-sizing: border-box;
-        font-family: "Manrope", sans-serif;
+        font-family: "DM Sans", sans-serif;
     }
     :root{
     --primary-clr: #3B82F6;
@@ -29,10 +31,7 @@
     --bg-clr: #F8FAFC;
     --pure-white: #FFFFFF;
 }
-@font-face {
-    font-family: "Manrope";
-    src: url('../fonts/MANROPE-VARIABLEFONT_WGHT.TTF');
-}
+/* Using DM Sans via Google Fonts (removed local Manrope @font-face) */
 nav{
     background: var(--secondary-clr);
     display: flex;
