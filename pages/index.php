@@ -26,10 +26,11 @@
   <section class="header" data-aos="fade-down" data-aos-duration="1000">
     <h1>Welcome to Booklyn</h1>
     <h5>Discover, Discuss, and Collect Books You Love.</h5>
-    <div class="search-bar">
+    <!-- <div class="search-bar">
       <input type="text" placeholder="Search for books..." />
       <button class="search-btn"><i class="fa fa-search"></i></button>
-    </div>
+    </div> -->
+    <button class="btn-search rounded-pill">Join the Community <i class="fa-solid fa-right-to-bracket"></i></button>
   </section>
 
   <!-- Trending Discussions -->
@@ -42,10 +43,10 @@
 
       <div class="slide-div">
         <!-- Navigation buttons -->
-        <button class="slider-btn left-slide" id="prevBtn" aria-label="Previous discussion">
+        <button style="position: fixed; right: 0;" class="slider-btn left-slide" id="prevBtn" aria-label="Previous discussion">
           <i class="fa-solid fa-chevron-left" aria-hidden="true"></i>
         </button>
-        <button class="slider-btn right-slide" id="nextBtn" aria-label="Next discussion">
+        <button style="position: fixed; right: -1em;"  class="slider-btn right-slide" id="nextBtn" aria-label="Next discussion">
           <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
         </button>
       </div>
