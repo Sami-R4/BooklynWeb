@@ -15,6 +15,12 @@
   <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
 
 </head>
+<style>
+  .see-blogs{
+    display: flex;
+    justify-content: center;
+  }
+</style>
 <body>
   <?php 
   include("../includes/navbar.php");
@@ -50,8 +56,10 @@
           <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
         </button>
       </div>
-    </div>
+        <div class="see-blogs"><a href="blogs.php"><button class="btn-search rounded-pill">See More Blogs <i class="fa-solid fa-comment"></i></button></a></div>
+      </div>
   </section>
+
 
   <!-- New Releases -->
   <section data-aos="zoom-in" data-aos-duration="1000">

@@ -13,7 +13,7 @@
     .footer{
         display: grid;
         grid-template-columns: repeat(3, 1fr);
-        background-color: #000068;
+        background: linear-gradient(135deg, #1e293b, #2569d6);
     }
     .footer h2{
         color: #fff;
