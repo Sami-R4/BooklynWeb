@@ -51,6 +51,7 @@ $show_step2 = isset($_SESSION['user_type']);
             --accent-gold: #FCD34D;
             --bg-clr: #F8FAFC;
             --pure-white: #FFFFFF;
+            --icon-bg: linear-gradient(135deg, #EFF6FF 0%, #DBEAFE 100%);
         }
 
         * {
@@ -178,32 +179,61 @@ $show_step2 = isset($_SESSION['user_type']);
             margin-bottom: 30px;
         }
 
+        /* IMPROVED User Type Select with Icon */
+        .user-type-wrapper {
+            position: relative;
+            margin-bottom: 25px;
+        }
+
+        .user-type-wrapper::before {
+            content: '\f007';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 56px;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--icon-bg);
+            border-right: 2px solid rgba(59, 130, 246, 0.15);
+            border-radius: 12px 0 0 12px;
+            color: var(--primary-clr);
+            font-size: 18px;
+            z-index: 1;
+            pointer-events: none;
+        }
+
         .user-type-select {
             width: 100%;
-            padding: 16px 20px;
-            background: var(--bg-clr);
-            border: 2px solid rgba(59, 130, 246, 0.3);
+            padding: 16px 20px 16px 72px;
+            background: var(--pure-white);
+            border: 2px solid rgba(59, 130, 246, 0.2);
             border-radius: 12px;
             color: var(--secondary-clr);
-            font-size: 16px;
-            margin-bottom: 25px;
+            font-size: 15px;
+            font-weight: 500;
             cursor: pointer;
             transition: all 0.3s ease;
             appearance: none;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%231E293B' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%233B82F6' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
             background-repeat: no-repeat;
             background-position: right 20px center;
+            height: 56px;
         }
 
         .user-type-select:focus {
             outline: none;
             border-color: var(--primary-clr);
-            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+            box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
         }
 
         .user-type-select option {
             background: var(--pure-white);
             color: var(--secondary-clr);
+            padding: 12px;
         }
 
         .btn-primary {
@@ -227,7 +257,7 @@ $show_step2 = isset($_SESSION['user_type']);
         }
 
         .error {
-            color: #ff6b6b;
+            color: #EF4444;
             font-size: 14px;
             margin-bottom: 15px;
             display: block;
@@ -287,8 +317,8 @@ $show_step2 = isset($_SESSION['user_type']);
         }
 
         .feature-list i {
-            width: 30px;
-            height: 30px;
+            width: 32px;
+            height: 32px;
             background: var(--accent-gold);
             color: var(--secondary-clr);
             border-radius: 50%;
@@ -296,6 +326,7 @@ $show_step2 = isset($_SESSION['user_type']);
             align-items: center;
             justify-content: center;
             flex-shrink: 0;
+            font-size: 14px;
         }
 
         .right-panel {
@@ -314,7 +345,7 @@ $show_step2 = isset($_SESSION['user_type']);
 
         .right-panel::-webkit-scrollbar-thumb {
             background: var(--primary-clr);
-            border-radius: 3px;
+            border-radius: 10px;
         }
 
         .form-group {
@@ -326,7 +357,7 @@ $show_step2 = isset($_SESSION['user_type']);
             display: block;
             margin-bottom: 8px;
             font-size: 14px;
-            font-weight: 500;
+            font-weight: 600;
             color: var(--secondary-clr);
         }
 
@@ -334,67 +365,119 @@ $show_step2 = isset($_SESSION['user_type']);
             color: #EF4444;
         }
 
+        /* IMPROVED Input Wrapper - Flex-based split design */
         .input-wrapper {
+            display: flex;
+            align-items: stretch;
+            background: var(--pure-white);
+            border: 2px solid rgba(59, 130, 246, 0.2);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s ease;
             position: relative;
+            height: 56px;
+        }
+
+        .input-wrapper:focus-within {
+            border-color: var(--primary-clr);
+            box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
+        }
+
+        /* IMPROVED Icon Section - Beautiful gradient background */
+        .input-icon {
+            width: 56px;
+            min-width: 56px;
+            flex-shrink: 0;
             display: flex;
             align-items: center;
-        }
-
-        .input-icon {
-            position: absolute;
-            left: 16px;
+            justify-content: center;
+            background: var(--icon-bg);
             color: var(--primary-clr);
-            font-size: 16px;
-            z-index: 1;
+            font-size: 18px;
+            border-right: 2px solid rgba(59, 130, 246, 0.15);
+            transition: all 0.3s ease;
         }
 
+        .input-wrapper:focus-within .input-icon {
+            background: linear-gradient(135deg, #DBEAFE 0%, #BFDBFE 100%);
+            color: #2563EB;
+        }
+
+        /* IMPROVED Input Field */
         .form-control {
-            width: 100%;
-            padding: 14px 16px 14px 45px;
-            background: var(--bg-clr);
-            border: 2px solid rgba(59, 130, 246, 0.3);
-            border-radius: 12px;
-            color: var(--secondary-clr);
+            border: none;
+            flex: 1;
+            padding: 0 18px;
+            background: var(--pure-white);
             font-size: 15px;
-            transition: all 0.3s ease;
+            color: var(--secondary-clr);
+            width: 100%;
+            height: 100%;
+            font-weight: 500;
         }
 
         .form-control:focus {
             outline: none;
-            border-color: var(--primary-clr);
-            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
-            background: var(--pure-white);
         }
 
         .form-control::placeholder {
             color: rgba(30, 41, 59, 0.4);
+            font-weight: 400;
         }
 
+        /* IMPROVED Password Toggle */
         .toggle-password {
             position: absolute;
-            right: 16px;
+            right: 18px;
+            top: 50%;
+            transform: translateY(-50%);
             color: var(--primary-clr);
             cursor: pointer;
-            transition: color 0.3s ease;
-            z-index: 1;
+            transition: all 0.3s ease;
+            z-index: 2;
+            font-size: 16px;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .toggle-password:hover {
-            color: var(--secondary-clr);
+            color: #2563EB;
+            transform: translateY(-50%) scale(1.1);
         }
 
+        /* Special handling for textarea */
         textarea.form-control {
             resize: vertical;
             min-height: 100px;
-            padding: 14px 16px 14px 45px;
+            padding: 16px 18px;
         }
 
-        .file-input-wrapper {
-            position: relative;
+        /* Textarea wrapper needs flexible height */
+        .input-wrapper:has(textarea) {
+            height: auto;
+            min-height: 120px;
+            align-items: stretch;
         }
 
-        .file-input-wrapper input[type="file"] {
-            padding: 14px 16px 14px 45px;
+        /* Icon for textarea - align to top */
+        .input-wrapper:has(textarea) .input-icon {
+            align-items: flex-start;
+            padding-top: 16px;
+        }
+
+        /* File input specific styles */
+        .file-input-wrapper .form-control {
+            padding: 0 18px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+        }
+
+        .file-input-wrapper .form-control::file-selector-button {
+            display: none;
         }
 
         .form-actions {
@@ -405,9 +488,9 @@ $show_step2 = isset($_SESSION['user_type']);
 
         .btn-back {
             flex: 1;
-            padding: 14px;
+            padding: 15px;
             background: var(--bg-clr);
-            border: 2px solid rgba(59, 130, 246, 0.3);
+            border: 2px solid rgba(59, 130, 246, 0.2);
             border-radius: 12px;
             color: var(--secondary-clr);
             font-size: 15px;
@@ -419,11 +502,12 @@ $show_step2 = isset($_SESSION['user_type']);
         .btn-back:hover {
             background: rgba(59, 130, 246, 0.1);
             border-color: var(--primary-clr);
+            transform: translateY(-2px);
         }
 
         .btn-submit {
             flex: 2;
-            padding: 14px;
+            padding: 15px;
             background: var(--primary-clr);
             border: none;
             border-radius: 12px;
@@ -444,8 +528,9 @@ $show_step2 = isset($_SESSION['user_type']);
         .error-message {
             color: #EF4444;
             font-size: 13px;
-            margin-top: 5px;
+            margin-top: 6px;
             display: block;
+            font-weight: 500;
         }
 
         /* Responsive Design */
@@ -511,6 +596,26 @@ $show_step2 = isset($_SESSION['user_type']);
             .btn-back, .btn-submit {
                 width: 100%;
             }
+
+            .input-wrapper {
+                height: 52px;
+            }
+
+            .input-icon {
+                width: 52px;
+                min-width: 52px;
+                font-size: 16px;
+            }
+
+            .user-type-wrapper::before {
+                width: 52px;
+                font-size: 16px;
+            }
+
+            .user-type-select {
+                padding: 15px 20px 15px 68px;
+                height: 52px;
+            }
         }
     </style>
 </head>
@@ -546,11 +651,13 @@ $show_step2 = isset($_SESSION['user_type']);
                 <p>Create account as an author or a reader.</p>
                 
                 <form method="POST" action="../app/process.php">
-                    <select name="user_type" class="user-type-select" required>
-                        <option value="" disabled selected>Select account type</option>
-                        <option value="reader">📖 Register as Reader</option>
-                        <option value="author">✍️ Register as Author</option>
-                    </select>
+                    <div class="user-type-wrapper">
+                        <select name="user_type" class="user-type-select" required>
+                            <option value="" disabled selected>Select account type</option>
+                            <option value="reader">📖 Register as Reader</option>
+                            <option value="author">✍️ Register as Author</option>
+                        </select>
+                    </div>
                     
                     <button type="submit" class="btn-primary" name="step1_submit">
                         Continue <i class="fa-solid fa-arrow-right" style="margin-left: 8px;"></i>
